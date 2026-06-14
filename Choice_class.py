@@ -13,7 +13,21 @@ class Warrior(Hero):
 
     
     def victory_text(self):
-        print("You took a sword from Hunter and calmly cut off the ogr's head.\n")
+        print("You calmly cut off the ogr's head.\n")
+        time.sleep(3)
+        print("You were under attack 1 hour.")
+        time.sleep(1)
+        print("""Killed many ogres and saved many merchants from death, 
+              you proved yourself again as a good and talent soldier""")
+        time.sleep(3)
+        print("""You Reached City with on problems after this one.
+              Then Captain Mave, one of the strongest soldier in the entire Kingdom came up to you:\n""")
+        time.sleep(3)
+        print("""Captain Mave: You fought very well, soldier.
+               For a long time I didn't see such an ordinary and young soldier
+               that can fight so discipline and good, What your Name?""")
+        time.sleep(5)
+        print(f"My name is {self.name}")
 
     def prologue(self):
         print("December 8:53, North Forest")

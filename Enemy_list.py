@@ -13,7 +13,7 @@ def create_Ogr():
                   "Ogr",
                   "Warrior")
 
-Ogr = create_Ogr
+Ogr = create_Ogr()
 
 small_ogr = Enemy("Small_Ogr", 
                   7, 

@@ -45,6 +45,7 @@ def location__first_fight(main_hero, small_ogr):
             if main_hero.zero_hp_start(small_ogr) == True:
                 main_hero.location = "city"
                 save_game(main_hero)
+                input("Press Enter to continue:")
                 main_hero.victory_text()
                 break
             fight.attack_enemy(small_ogr, main_hero)
@@ -69,3 +70,30 @@ def location__first_fight(main_hero, small_ogr):
                 #     else:
             print(f"{main_hero.name}\nHP:{main_hero.current_hp}\n")
             print(f"{small_ogr.name}\nHP:{small_ogr.current_hp}\n")
+
+def location_current_fight(main_hero, enemy):
+    fight = Fight()
+    game = Game()
+    heal = Heal()
+    while True:
+        game.cicle()
+        if game.start == 1:        
+            fight.attack_enemy(main_hero, enemy)
+            if main_hero.zero_hp_start(enemy) == True:
+                main_hero.location = "city"
+                save_game(main_hero)
+                input("Press Enter to continue:")
+                main_hero.victory_text()
+                break
+            fight.attack_enemy(enemy, main_hero)
+            if main_hero.zero_hp_start(main_hero) == True:
+                break
+            
+            elif game.start == 2:
+                # if main_hero.class_character == "Mage":
+
+                Heal.heal_potion(heal, main_hero)
+            elif game.start == 0:
+                main_hero = back_to_main_menu(main_hero)
+                break
+                
