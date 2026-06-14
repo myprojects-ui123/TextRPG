@@ -99,5 +99,5 @@ def location__current_fight(main_hero, enemy):
         elif game.start == 0:
             main_hero = back_to_main_menu(main_hero)
             break
-            print(f"{main_hero.name}\nHP:{main_hero.current_hp}\n")
-            print(f"{enemy.name}\nHP:{enemy.current_hp}\n")
+        print(f"{main_hero.name}\nHP:{main_hero.current_hp}\n")
+        print(f"{enemy.name}\nHP:{enemy.current_hp}\n")
