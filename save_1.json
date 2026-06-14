@@ -1,0 +1,18 @@
+{
+    "name": "Mike12",
+    "Strength": 3,
+    "Dexterity": 5,
+    "Magic": 18,
+    "WillPower": 13,
+    "Cunning": 4,
+    "Physique": 7,
+    "Lvl": 1,
+    "Species": "Human",
+    "class": "Mage",
+    "Current_hp": 48,
+    "Max_hp": 71,
+    "Experience": 1250,
+    "Gold": 40,
+    "Heal_potion": 0,
+    "Location": "city"
+}
