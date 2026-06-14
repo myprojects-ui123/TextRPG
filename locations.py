@@ -46,7 +46,6 @@ def location__first_fight(main_hero, small_ogr):
                 main_hero.location = "city"
                 save_game(main_hero)
                 main_hero.victory_text()
-                location_s(main_hero)
                 break
             fight.attack_enemy(small_ogr, main_hero)
             if main_hero.zero_hp_start(main_hero) == True:

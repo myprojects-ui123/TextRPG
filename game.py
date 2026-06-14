@@ -1,25 +1,16 @@
-from saves import save_game
 from enemies import Enemy
 from Classes import choose_name, choice_start
 from fighting import *
 from Story import *
 from locations import location_s, location__first_fight
+from Enemy_list import small_ogr
+
 import os
 
 main_hero = None
 original_name = None
 
-small_ogr = Enemy("Ogr", 
-                  7, 
-                  5, 
-                  0, 
-                  5,
-                  3, 
-                  5,
-                  0,
-                  "Start",
-                  "Ogr",
-                  "Warrior")
+
 game = Game()
 fight = Fight()
 heal = Heal()
@@ -45,7 +36,6 @@ while True:
         break
 
     while True:     
-        print(main_hero.location)
         location_s(main_hero) 
         break
     
