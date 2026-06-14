@@ -1,4 +1,5 @@
 from characters import Character
+import math
 
 class Enemy(Character):
     def __init__(self, 
@@ -10,6 +11,8 @@ class Enemy(Character):
             cunning,
             physique,
             heal_potion,
+            stunned,
+            crit_damage,
             location,
             Species,
             class_character):
@@ -24,6 +27,8 @@ class Enemy(Character):
             self.Species = Species
             self.heal_potion = heal_potion
             self.location = location
+            self.stunned = stunned
+            self.crit_damage = crit_damage
 
             self.update_enemy()
 
@@ -41,8 +46,8 @@ class Enemy(Character):
                     )
 
     def update_enemy(self):
-        self.attack = int((self.strength) + (self.dexterity) * 0.7)
-        self.dodge = int(self.dexterity * 0.5)
-        self.crit_chance = int(self.cunning // 2)
+        self.attack = math.ceil((self.strength) + (self.dexterity) * 0.7)
+        self.dodge = math.ceil(self.dexterity * 0.5)
+        self.crit_chance = math.ceil(self.cunning // 2)
         self.max_hp = 50 + self.physique * 3
         self.current_hp = self.max_hp

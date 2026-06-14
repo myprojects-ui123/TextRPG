@@ -1,3 +1,4 @@
+import math
 
 class Character:
     def __init__(self,
@@ -10,7 +11,7 @@ class Character:
                           exp,
                           gold,
                           heal_potion,
-                          location
+                          location,
                           ):
         self.name = name
         self.max_hp = max_hp
@@ -75,11 +76,11 @@ class Hero(Character):
             )
 
     def gets_hp(self, enemy):
-        if enemy.name == "Ogr":
+        if enemy.name == "Small_Ogr":
             self.exp += 1250
             self.gold += 40
 
-        if enemy.name == "Small_Ogr":
+        if enemy.name == "Ogr":
             self.exp += 125
             self.gold += 5
 
@@ -96,21 +97,21 @@ class Hero(Character):
         self.max_hp = 50 + self.physique * 3
         self.current_hp = self.max_hp
         if self.class_character == "Warrior":
-            self.attack = int((int(self.strength * 1.5) + int(self.dexterity * 0.8)) * 0.8)
-            self.dodge = int(self.dexterity * 0.5)
-            self.crit_chance = int(self.cunning // 2)
+            self.attack = math.ceil((math.ceil(self.strength * 1.5) + math.ceil(self.dexterity * 0.6)) * 0.8)
+            self.dodge = math.ceil(self.dexterity * 0.5)
+            self.crit_chance = math.ceil(self.cunning // 2)
 
         elif self.class_character == "Mage":
-            self.attack = int(self.magic * 1.5)
-            self.dodge = int(self.dexterity * 0.4)
+            self.attack = math.ceil(self.magic * 1.5)
+            self.dodge = math.ceil(self.dexterity * 0.4)
             self.crit_chance = 0
             
         elif self.class_character == "Assasin":
-            self.attack = int((int(self.strength * 0.8) + int(self.dexterity * 1.5)) * 0.7)
-            self.dodge = int(self.dexterity * 0.7)
-            self.crit_chance = int(self.cunning // 2) + 10
+            self.attack = math.ceil((math.ceil(self.strength * 0.8) + math.ceil(self.dexterity * 1.5)) * 0.7)
+            self.dodge = math.ceil(self.dexterity * 0.7)
+            self.crit_chance = math.ceil(self.cunning // 2) + 10
 
         elif self.class_character == "Tank":
-            self.attack = int(self.max_hp * 0.08 + self.strength * 0.8)
-            self.dodge = int(self.dexterity * 0.5)
-            self.crit_chance = int(self.cunning // 2)
+            self.attack = math.ceil(self.max_hp * 0.08 + self.strength * 0.8)
+            self.dodge = math.ceil(self.dexterity * 0.5)
+            self.crit_chance = math.ceil(self.cunning // 2)

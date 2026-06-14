@@ -4,25 +4,46 @@ from Choice_class import *
 import json
         
 def save(main_hero):
-    return {
-    "name": main_hero.name,
-    "Strength": main_hero.strength, 
-    "Dexterity": main_hero.dexterity, 
-    "Magic": main_hero.magic, 
-    "WillPower": main_hero.will_power, 
-    "Cunning": main_hero.cunning, 
-    "Physique": main_hero.physique, 
-    "Lvl": main_hero.lvl,
-    "Species": main_hero.Species,
-    "class": main_hero.class_character,
-    "Current_hp": main_hero.current_hp,
-    "Max_hp": main_hero.max_hp,
-    "Experience": main_hero.exp,
-    "Gold": main_hero.gold,
-    "Heal_potion": main_hero.heal_potion,
-    "Location": main_hero.location
-
+    if main_hero.class_character == "Mage":
+        return {
+        "name": main_hero.name,
+        "Strength": main_hero.strength, 
+        "Dexterity": main_hero.dexterity, 
+        "Magic": main_hero.magic, 
+        "WillPower": main_hero.will_power, 
+        "Cunning": main_hero.cunning, 
+        "Physique": main_hero.physique, 
+        "Lvl": main_hero.lvl,
+        "Species": main_hero.Species,
+        "class": main_hero.class_character,
+        "Current_hp": main_hero.current_hp,
+        "Max_hp": main_hero.max_hp,
+        "Max_Mana": main_hero.max_mana,
+        "Experience": main_hero.exp,
+        "Gold": main_hero.gold,
+        "Heal_potion": main_hero.heal_potion,
+        "Location": main_hero.location
 }
+    else:
+        return {
+        "name": main_hero.name,
+        "Strength": main_hero.strength, 
+        "Dexterity": main_hero.dexterity, 
+        "Magic": main_hero.magic, 
+        "WillPower": main_hero.will_power, 
+        "Cunning": main_hero.cunning, 
+        "Physique": main_hero.physique, 
+        "Lvl": main_hero.lvl,
+        "Species": main_hero.Species,
+        "class": main_hero.class_character,
+        "Current_hp": main_hero.current_hp,
+        "Max_hp": main_hero.max_hp,
+        "Max_Stamina": main_hero.max_stamina,
+        "Experience": main_hero.exp,
+        "Gold": main_hero.gold,
+        "Heal_potion": main_hero.heal_potion,
+        "Location": main_hero.location
+        }
 
 def save_game(main_hero):
     with open("save_1.json", "w") as file:
@@ -56,13 +77,3 @@ def load_game():
     main_hero.location = save_data["Location"]
     return main_hero
 
-def back_to_main_menu(main_hero):
-    while True:
-        save_point = int(input("Do you wanna save the game?\n1.Yes\n2.No\n3.Cancel\n"))
-        if save_point == 1:
-           return save_game(main_hero)
-
-        elif save_point == 2:
-            return 
-        elif save_point > 3 and save_point <= 0:
-            continue

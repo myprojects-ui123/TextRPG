@@ -17,11 +17,36 @@ class Fight:
         if damage:
             print(f"{damage}\n")
         enemy.cur_hp(enemy)
+        time.sleep(1)
         print(f"{enemy.name}: {enemy.current_hp}\n")
 
-    def attack_enemy(self, attacker, enemy):
-        self.damage_enemy(attacker, enemy)
-        time.sleep(1)
+    def fighter_kick(self, attacker, enemy):
+        if self.kick_cd > 0:
+            print(f"Kick on cooldown, {self.kick_cd} turns left\n")
+            return False
+        damage = int(attacker.strength * 1.5)
+
+        enemy.current_hp -= damage
+        enemy.stunned = 1
+        
+        print(f'{enemy.name} is stunned!\n')
+
+        attacker.kick_cd = 2
+
+    def reduce_cooldown_fighter(self, main_hero):
+        if main_hero.kick_cd > 0:
+            main_hero.kick_cd -= 1
+
+
+
+    def stun(self, main_hero, enemy):
+        if enemy.stunned >= 1:
+            print(f"{enemy.name} is stunned and skips the turn!\n")
+            enemy.stunned -= 1
+        else:
+            fight = Fight()
+            fight.damage_enemy(enemy, main_hero)
+        
 
        
     def dodge_enemy(self, attacker, enemy):
@@ -42,9 +67,9 @@ class Fight:
 class Heal:
 
     def heal_potion(self, hero):
-        if hero.potion >= 1:
+        if hero.heal_potion >= 1:
             self.limitation(hero)
-            hero.potion -= 1
+            hero.heal_potion -= 1
         else: 
             print("You dont have Heal potions\n")
 

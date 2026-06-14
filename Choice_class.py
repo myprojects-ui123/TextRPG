@@ -10,6 +10,15 @@ class Warrior(Hero):
         self.crit_damage = 1.5
 
         self.update_stats()
+        self.update_stats_a()
+
+        self.max_stamina = 20 + self.will_power * 3
+        self.current_stamina = self.max_stamina
+    def update_stats_a(self):
+        self.max_stamina = 20 + self.will_power * 3
+        self.current_stamina = self.max_stamina
+
+        
 
     
     def victory_text(self):
@@ -80,9 +89,17 @@ class Mage(Hero):
         super().__init__(name, 3, 5, 18, 13, 4, 7, 1, 0, 0, 0, "Start", "Human", "Mage")
         self.max_mana = 25 + self.will_power * 3
         self.current_mana = self.max_mana
+        self.ability = "Dimension"
         self.crit_damage = 0
-
+        
         self.update_stats()
+        self.update_stats_m()
+
+    def update_stats_m(self):
+        self.max_mana = 25 + self.will_power * 3
+        self.current_mana = self.max_mana
+        
+        
     def victory_text(self):
         print("You banished the ogr to another dimension.\n")
     
@@ -92,6 +109,11 @@ class Mage(Hero):
 class Assasin(Hero):
     def __init__(self, name):
         super().__init__(name, 8, 17, 4, 6, 10, 5, 1, 0, 0, 0, "Start", "Human", "Assasin")
+        self.max_stamina = 20 + self.will_power * 3
+        self.current_stamina = self.max_stamina
+        def update_stats_a():
+            self.max_stamina = 20 + self.will_power * 3
+        self.current_stamina = self.max_stamina
         self.crit_damage = 2
         self.update_stats()
 
@@ -102,7 +124,18 @@ class Tank(Hero):
     def __init__(self, name):
         super().__init__(name, 8, 3, 2, 9, 3, 25, 1, 0, 0, 0, "Start", "Human", "Tank")
         self.crit_damage = 1.2
+
+        self.max_stamina = 20 + self.will_power * 3
+        self.current_stamina = self.max_stamina
+        
         self.update_stats()
+        self.update_stats_t()
+        
+    def update_stats_t(self):
+        self.max_stamina = 20 + self.will_power * 3
+        self.current_stamina = self.max_stamina
+
+        
 
     def victory_text(self):
         print(".Ogr couldn't make any scratch on you and ran away\n")
