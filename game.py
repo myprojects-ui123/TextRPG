@@ -29,7 +29,7 @@ while True:
         main_hero = choice_start(original_name, main_hero)
         while True:
             start_story(main_hero)
-            location__current_fight(main_hero, small_ogr)
+            location__first_fight(main_hero, small_ogr)
             break
     
     if game.start_game == 0:

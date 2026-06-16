@@ -1,5 +1,6 @@
 import random
 import time
+import math
 
 class Fight:
 
@@ -7,7 +8,7 @@ class Fight:
         if random.randint(1, 100) <= attacker.crit_chance:
             print(f"Crit Damage X{attacker.crit_damage}!")
             old_damage = damage
-            damage = int(damage * attacker.crit_damage)
+            damage = math.ceil(damage * attacker.crit_damage)
             print(f"{old_damage} ->", end=" ")
             time.sleep(1)
             return damage
@@ -24,7 +25,7 @@ class Fight:
         if self.kick_cd > 0:
             print(f"Kick on cooldown, {self.kick_cd} turns left\n")
             return False
-        damage = int(attacker.strength * 1.5)
+        damage = math.ceil(attacker.strength * 1.5)
 
         enemy.current_hp -= damage
         enemy.stunned = 1
@@ -80,7 +81,7 @@ class Heal:
             print("Your Current HP is too high\n")
 
     def healer(self, hero):
-        amount = 5
+        amount = 20 + int(hero.magic * 0.1)
         hero.current_hp += amount
         print(f"You got heal +{amount}\n")
         if hero.current_hp > hero.max_hp:

@@ -77,21 +77,21 @@ class Hero(Character):
 
     def gets_hp(self, enemy):
         if enemy.name == "Small_Ogr":
-            self.exp += 1250
+            self.exp += 1000
             self.gold += 40
 
         if enemy.name == "Ogr":
             self.exp += 125
             self.gold += 5
 
-    def zero_hp_start(self, enemy):
+    def zero_hp(self, enemy):
         if enemy.current_hp == 0:
             print("You win!\n")
             self.gets_hp(enemy)
             return True
         elif self.current_hp == 0:
             print("You died...\n")
-            return True
+            return False
 
     def update_stats(self):
         self.max_hp = 50 + self.physique * 3

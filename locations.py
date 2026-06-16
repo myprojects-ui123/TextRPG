@@ -43,19 +43,19 @@ def location__first_fight(main_hero, small_ogr):
         if game.start == 1:        
             fight.damage_enemy(main_hero, small_ogr)
             if main_hero.zero_hp_start(small_ogr) == True:
+                main_hero.gets_hp(small_ogr)
+                main_hero.lvl_up()
                 main_hero.location = "city"
                 save_game(main_hero)
                 input("Press Enter to continue:")
                 main_hero.victory_text()
                 break
             fight.damage_enemy(small_ogr, main_hero)
-            if main_hero.zero_hp_start(main_hero) == True:
+            if main_hero.zero_hp_start(main_hero) == False:
                 break
             
             elif game.start == 2:
-                # if main_hero.class_character == "Mage":
-
-                Heal.heal_potion(heal, main_hero)
+                heal.heal_potion(main_hero)
             elif game.start == 0:
                 break
             print(f"{main_hero.name}\nHP:{main_hero.current_hp}\n")
@@ -69,14 +69,16 @@ def location__current_fight(main_hero, enemy):
         game.cicle()
         if game.start == 1:        
             fight.damage_enemy(main_hero, enemy)
-            if main_hero.zero_hp_start(enemy) == True:
+            if main_hero.zero_hp(enemy) == True:
+                main_hero.gets_hp(enemy)
+                main_hero.lvl_up()
                 main_hero.location = "city"
                 save_game(main_hero)
                 input("Press Enter to continue:")
                 main_hero.victory_text()
                 break
             fight.stun(main_hero, enemy)
-            if main_hero.zero_hp_start(main_hero) == True:
+            if main_hero.zero_hp(main_hero) == True:
                 break
             
         elif game.start == 2:
