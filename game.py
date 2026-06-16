@@ -1,4 +1,3 @@
-from enemies import Enemy
 from Classes import choose_name, choice_start
 from fighting import *
 from Story import *
