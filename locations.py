@@ -42,25 +42,26 @@ def location__first_fight(main_hero, small_ogr):
         game.cicle()
         if game.start == 1:        
             fight.damage_enemy(main_hero, small_ogr)
-            if main_hero.zero_hp_start(small_ogr) == True:
-                main_hero.gets_hp(small_ogr)
+            if main_hero.zero_hp(small_ogr) == True:
                 main_hero.lvl_up()
                 main_hero.location = "city"
+                main_hero.first_fight = True
                 save_game(main_hero)
                 input("Press Enter to continue:")
                 main_hero.victory_text()
-                break
+                
+                return main_hero
             fight.damage_enemy(small_ogr, main_hero)
-            if main_hero.zero_hp_start(main_hero) == False:
-                break
-            
-            elif game.start == 2:
-                heal.heal_potion(main_hero)
-            elif game.start == 0:
+            if main_hero.zero_hp(main_hero) == False:
                 break
             print(f"{main_hero.name}\nHP:{main_hero.current_hp}\n")
             print(f"{small_ogr.name}\nHP:{small_ogr.current_hp}\n")
-
+        elif game.start == 2:
+            heal.heal_potion(main_hero)
+        elif game.start == 3:
+            print("Access denied\n")
+        elif game.start == 0:
+            return False
 def location__current_fight(main_hero, enemy):
     fight = Fight()
     game = Game()
@@ -70,7 +71,6 @@ def location__current_fight(main_hero, enemy):
         if game.start == 1:        
             fight.damage_enemy(main_hero, enemy)
             if main_hero.zero_hp(enemy) == True:
-                main_hero.gets_hp(enemy)
                 main_hero.lvl_up()
                 main_hero.location = "city"
                 save_game(main_hero)
@@ -85,11 +85,8 @@ def location__current_fight(main_hero, enemy):
                 # if main_hero.class_character == "Mage":
 
                 heal.heal_potion(main_hero)
-            
-        elif game.start == 3 and main_hero.lvl < 2:
-            print("Access denied\n")
 
-        elif game.start == 3 and main_hero.lvl >= 2 and main_hero.lvl < 5 and main_hero.class_character == "Warrior":
+        elif game.start == 3 and main_hero.lvl < 5 and main_hero.class_character == "Warrior":
             kicked = int(input("1.Kick\n0.Back"))
             if kicked == 1:
                 fight.reduce_cooldown_fighter(main_hero)

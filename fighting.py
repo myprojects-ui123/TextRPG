@@ -68,7 +68,7 @@ class Fight:
 class Heal:
 
     def heal_potion(self, hero):
-        if hero.heal_potion >= 1:
+        if hero.heal_potion > 0:
             self.limitation(hero)
             hero.heal_potion -= 1
         else: 

@@ -44,7 +44,8 @@ class Hero(Character):
             heal_potion,
             location,
             Species,
-            class_character):
+            class_character,
+            first_fight):
             self.name = name
             self.strength = strength
             self.dexterity = dexterity
@@ -59,6 +60,7 @@ class Hero(Character):
             self.location = location
             self.class_character = class_character
             self.Species = Species
+            self.first_fight = first_fight
 
             self.update_stats()
 

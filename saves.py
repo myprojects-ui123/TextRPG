@@ -20,9 +20,11 @@ def save(main_hero):
         "Max_hp": main_hero.max_hp,
         "Max_Mana": main_hero.max_mana,
         "Experience": main_hero.exp,
+        "Exp Need": main_hero.exp_need,
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
-        "Location": main_hero.location
+        "Location": main_hero.location,
+        "Prologue": main_hero.first_fight
 }
     else:
         return {
@@ -40,9 +42,11 @@ def save(main_hero):
         "Max_hp": main_hero.max_hp,
         "Max_Stamina": main_hero.max_stamina,
         "Experience": main_hero.exp,
+        "Exp Need": main_hero.exp_need,
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
-        "Location": main_hero.location
+        "Location": main_hero.location,
+        "Prologue": main_hero.first_fight
         }
 
 def save_game(main_hero):
@@ -71,9 +75,11 @@ def load_game():
     main_hero.class_character = save_data["class"] 
     main_hero.current_hp = save_data["Current_hp"] 
     main_hero.max_hp = save_data["Max_hp"]
+    main_hero.max_stamina = save_data["Max_Stamina"]
     main_hero.exp = save_data["Experience"]
     main_hero.gold = save_data["Gold"]
     main_hero.heal_potion = save_data["Heal_potion"]
     main_hero.location = save_data["Location"]
+    main_hero.first_fight = save_data["Prologue"]
     return main_hero
 

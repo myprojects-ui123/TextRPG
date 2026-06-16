@@ -4,7 +4,7 @@ from characters import Hero
 
 class Warrior(Hero):
     def __init__(self, name):
-        super().__init__(name, 13, 7, 3, 9, 5, 13, 1, 0, 0, 0, "Start ", "Human", "Warrior")
+        super().__init__(name, 13, 7, 3, 9, 5, 13, 1, 0, 0, 0, "Start ", "Human", "Warrior", False)
         self.kick_stun = 2
         self.kick_cd = 0
         self.crit_damage = 1.5
@@ -16,8 +16,8 @@ class Warrior(Hero):
 
     def lvl_up(self):
         if self.exp >= self.exp_need:
-            self.exp -= self.exp_need
             self.lvl += 1
+            self.exp = self.exp - self.exp_need
             self.exp_need = self.exp_need + 500
             print(f"Your lvl = {self.lvl}!!!\n")
             for i in range(3, 0, -1):
@@ -109,7 +109,7 @@ class Warrior(Hero):
 
 class Mage(Hero):
     def __init__(self, name):
-        super().__init__(name, 3, 5, 18, 13, 4, 7, 1, 0, 0, 0, "Start", "Human", "Mage")
+        super().__init__(name, 3, 5, 18, 13, 4, 7, 1, 0, 0, 0, "Start", "Human", "Mage", False)
         self.max_mana = 25 + self.will_power * 3
         self.current_mana = self.max_mana
         self.ability = "Dimension"
@@ -126,7 +126,7 @@ class Mage(Hero):
     def lvl_up(self):
         if self.exp >= self.exp_need:
             self.lvl += 1
-            self.exp -= self.exp_need
+            self.exp = self.exp - self.exp_need 
             self.exp_need = self.exp_need + 500
             print(f"Your lvl = {self.lvl}!!!\n")
             for i in range(3, 0, -1):
@@ -154,7 +154,7 @@ class Mage(Hero):
 
 class Assasin(Hero):
     def __init__(self, name):
-        super().__init__(name, 8, 17, 4, 6, 10, 5, 1, 0, 0, 0, "Start", "Human", "Assasin")
+        super().__init__(name, 8, 17, 4, 6, 10, 5, 1, 0, 0, 0, "Start", "Human", "Assasin", False)
         self.max_stamina = 20 + self.will_power * 3
         self.current_stamina = self.max_stamina
         self.exp_need = 1000
@@ -169,8 +169,8 @@ class Assasin(Hero):
     
     def lvl_up(self):
         if self.exp >= self.exp_need:
-            self.exp -= self.exp_need
             self.lvl += 1
+            self.exp = self.exp - self.exp_need
             self.exp_need = self.exp_need + 500
             print(f"Your lvl = {self.lvl}!!!\n")
             for i in range(3, 0, -1):
@@ -198,7 +198,7 @@ class Assasin(Hero):
 class Tank(Hero):
 
     def __init__(self, name):
-        super().__init__(name, 8, 3, 2, 9, 3, 25, 1, 0, 0, 0, "Start", "Human", "Tank")
+        super().__init__(name, 8, 3, 2, 9, 3, 25, 1, 0, 0, 0, "Start", "Human", "Tank", False)
         self.crit_damage = 1.2
 
         self.max_stamina = 20 + self.will_power * 3
@@ -213,8 +213,8 @@ class Tank(Hero):
 
     def lvl_up(self):
         if self.exp >= self.exp_need:
-            self.exp -= self.exp_need
             self.lvl += 1
+            self.exp = self.exp - self.exp_need
             self.exp_need = self.exp_need + 500
             print(f"Your lvl = {self.lvl}!!!\n")
             for i in range(3, 0, -1):

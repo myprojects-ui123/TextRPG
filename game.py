@@ -2,8 +2,9 @@ from enemies import Enemy
 from Classes import choose_name, choice_start
 from fighting import *
 from Story import *
-from locations import location_s, location__first_fight, location__current_fight
+from locations import location_s, location__first_fight
 from Enemy_list import *
+from saves import save_game
 
 import os
 
@@ -27,6 +28,7 @@ while True:
     if game.start_game == 1:
         original_name = choose_name(original_name)
         main_hero = choice_start(original_name, main_hero)
+        save_game(main_hero)
         while True:
             start_story(main_hero)
             location__first_fight(main_hero, small_ogr)
@@ -35,8 +37,5 @@ while True:
     if game.start_game == 0:
         break
 
-    while True:     
+    if main_hero.first_fight == True:     
         location_s(main_hero) 
-        break
-    
-    
