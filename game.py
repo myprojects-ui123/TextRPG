@@ -1,9 +1,10 @@
 from Classes import choose_name, choice_start
 from fighting import *
 from Story import *
-from locations import location_s, location__first_fight
+from locations import location__first_fight, location__current_fight
 from Enemy_list import *
 from saves import save_game
+from Plot import *
 
 import os
 
@@ -24,17 +25,16 @@ while True:
             print("No save")
 
             
-    if game.start_game == 1:
+    elif game.start_game == 1:
         original_name = choose_name(original_name)
         main_hero = choice_start(original_name, main_hero)
         save_game(main_hero)
         while True:
             start_story(main_hero)
-            location__first_fight(main_hero, small_ogr)
+            location__current_fight(main_hero, Ogr)
             break
     
-    if game.start_game == 0:
+    elif game.start_game == 0:
         break
-
-    if main_hero.first_fight == True:     
-        location_s(main_hero) 
+         
+    chapter_1_1(main_hero)

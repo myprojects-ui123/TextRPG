@@ -1,3 +1,4 @@
+from characters import Character
 import random
 import time
 import math
@@ -17,15 +18,15 @@ class Fight:
         damage = self.dodge_enemy(attacker, enemy)
         if damage:
             print(f"{damage}\n")
-        enemy.cur_hp(enemy)
+        enemy.normalize_hp(enemy)
         time.sleep(1)
         print(f"{enemy.name}: {enemy.current_hp}\n")
 
     def fighter_kick(self, attacker, enemy):
-        if self.kick_cd > 0:
-            print(f"Kick on cooldown, {self.kick_cd} turns left\n")
+        if attacker.kick_cd > 0:
+            print(f"Kick on cooldown, {attacker.kick_cd} turns left\n")
             return False
-        damage = math.ceil(attacker.strength * 1.5)
+        damage = math.ceil(attacker.strength * 1.25)
 
         enemy.current_hp -= damage
         enemy.stunned = 1
@@ -33,6 +34,9 @@ class Fight:
         print(f'{enemy.name} is stunned!\n')
 
         attacker.kick_cd = 2
+        print(f"{enemy.name}: -{damage}\n")
+
+        attacker.normalize_hp(enemy)
 
     def reduce_cooldown_fighter(self, main_hero):
         if main_hero.kick_cd > 0:
@@ -48,6 +52,24 @@ class Fight:
             fight = Fight()
             fight.damage_enemy(enemy, main_hero)
         
+    def poisoning(self, attacker, enemy):
+        if attacker.poison.cd > 0:
+            print(f"Poison on cooldown, {attacker.poison.cd} turns left")
+
+        damage = math.cell(attacker.cunning * 1.5)
+        enemy.current_hp -= damage
+        enemy.bleeding = 2
+        attacker.poison_cd = 3
+        print(f"You used a poison. {enemy.name} is bleeding!")
+
+    def reduce_poison(self, attacker, enemy):
+        if enemy.bleeding > 0:
+            enemy.current_hp -= 5
+            print("Bleeding: -5\n")
+            enemy.bleeding -= 1
+
+        if attacker.poison_cd > 0:
+            attacker.poison -= 1
 
        
     def dodge_enemy(self, attacker, enemy):
@@ -81,7 +103,7 @@ class Heal:
             print("Your Current HP is too high\n")
 
     def healer(self, hero):
-        amount = 20 + int(hero.magic * 0.1)
+        amount = 20 + int(hero.magic * 0.15)
         hero.current_hp += amount
         print(f"You got heal +{amount}\n")
         if hero.current_hp > hero.max_hp:

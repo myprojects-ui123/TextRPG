@@ -4,7 +4,7 @@ from characters import Hero
 
 class Warrior(Hero):
     def __init__(self, name):
-        super().__init__(name, 13, 7, 3, 9, 5, 13, 1, 0, 0, 0, "Start ", "Human", "Warrior", False)
+        super().__init__(name, 13, 7, 3, 9, 5, 13, 2, 0, 0, 0, "Start ", "Human", "Warrior", False, None, 0)
         self.kick_stun = 2
         self.kick_cd = 0
         self.crit_damage = 1.5
@@ -109,10 +109,10 @@ class Warrior(Hero):
 
 class Mage(Hero):
     def __init__(self, name):
-        super().__init__(name, 3, 5, 18, 13, 4, 7, 1, 0, 0, 0, "Start", "Human", "Mage", False)
+        super().__init__(name, 3, 5, 18, 13, 4, 7, 1, 0, 0, 0, "Start", "Human", "Mage", False, None, 0)
         self.max_mana = 25 + self.will_power * 3
         self.current_mana = self.max_mana
-        self.ability = "Dimension"
+        self.dimension_cd = 0
         self.crit_damage = 0
         self.exp_need = 1000
         
@@ -154,10 +154,11 @@ class Mage(Hero):
 
 class Assasin(Hero):
     def __init__(self, name):
-        super().__init__(name, 8, 17, 4, 6, 10, 5, 1, 0, 0, 0, "Start", "Human", "Assasin", False)
+        super().__init__(name, 8, 17, 4, 6, 10, 5, 1, 0, 0, 0, "Start", "Human", "Assasin", False, None, 0)
         self.max_stamina = 20 + self.will_power * 3
         self.current_stamina = self.max_stamina
         self.exp_need = 1000
+        self.poison_cd = 0
         self.crit_damage = 2
 
         self.update_stats()
@@ -198,7 +199,7 @@ class Assasin(Hero):
 class Tank(Hero):
 
     def __init__(self, name):
-        super().__init__(name, 8, 3, 2, 9, 3, 25, 1, 0, 0, 0, "Start", "Human", "Tank", False)
+        super().__init__(name, 8, 3, 2, 9, 3, 25, 1, 0, 0, 0, "Start", "Human", "Tank", False, None, 0)
         self.crit_damage = 1.2
 
         self.max_stamina = 20 + self.will_power * 3

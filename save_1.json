@@ -1,6 +1,6 @@
 {
-    "name": "Mike_number_1",
-    "Strength": 16,
+    "name": "MIke12",
+    "Strength": 13,
     "Dexterity": 7,
     "Magic": 3,
     "WillPower": 9,
@@ -9,13 +9,13 @@
     "Lvl": 2,
     "Species": "Human",
     "class": "Warrior",
-    "Current_hp": 89,
+    "Current_hp": 67,
     "Max_hp": 89,
     "Max_Stamina": 47,
-    "Experience": 0,
-    "Exp Need": 1500,
-    "Gold": 40,
+    "Experience": 125,
+    "Exp Need": 1000,
+    "Gold": 5,
     "Heal_potion": 0,
-    "Location": "city",
-    "Prologue": true
+    "Location": "Start ",
+    "Prologue": false
 }

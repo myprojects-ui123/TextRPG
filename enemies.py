@@ -13,6 +13,8 @@ class Enemy(Character):
             heal_potion,
             stunned,
             crit_damage,
+            bleeding,
+            burn,
             location,
             Species,
             class_character):
@@ -28,6 +30,8 @@ class Enemy(Character):
             self.heal_potion = heal_potion
             self.location = location
             self.stunned = stunned
+            self.bleeding = bleeding
+            self.burn = burn
             self.crit_damage = crit_damage
 
             self.update_enemy()

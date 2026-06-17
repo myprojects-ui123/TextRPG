@@ -25,7 +25,7 @@ class Character:
         self.location = location
     
 
-    def cur_hp(self, enemy):
+    def normalize_hp(self, enemy):
         if enemy.current_hp < 0:
             enemy.current_hp = 0
 
@@ -45,7 +45,9 @@ class Hero(Character):
             location,
             Species,
             class_character,
-            first_fight):
+            first_fight,
+            story,
+            chapter):
             self.name = name
             self.strength = strength
             self.dexterity = dexterity
@@ -61,6 +63,8 @@ class Hero(Character):
             self.class_character = class_character
             self.Species = Species
             self.first_fight = first_fight
+            self.story = story
+            self.chapter = chapter
 
             self.update_stats()
 
