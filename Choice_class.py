@@ -109,7 +109,7 @@ class Warrior(Hero):
 
 class Mage(Hero):
     def __init__(self, name):
-        super().__init__(name, 3, 5, 18, 13, 4, 7, 1, 0, 0, 0, "Start", "Human", "Mage", False, None, 0)
+        super().__init__(name, 3, 5, 18, 13, 4, 7, 2, 0, 0, 0, "Start", "Human", "Mage", False, None, 0)
         self.max_mana = 25 + self.will_power * 3
         self.current_mana = self.max_mana
         self.dimension_cd = 0
@@ -154,7 +154,7 @@ class Mage(Hero):
 
 class Assasin(Hero):
     def __init__(self, name):
-        super().__init__(name, 8, 17, 4, 6, 10, 5, 1, 0, 0, 0, "Start", "Human", "Assasin", False, None, 0)
+        super().__init__(name, 8, 17, 4, 6, 10, 5, 2, 0, 0, 0, "Start", "Human", "Assasin", False, None, 0)
         self.max_stamina = 20 + self.will_power * 3
         self.current_stamina = self.max_stamina
         self.exp_need = 1000
@@ -199,7 +199,7 @@ class Assasin(Hero):
 class Tank(Hero):
 
     def __init__(self, name):
-        super().__init__(name, 8, 3, 2, 9, 3, 25, 1, 0, 0, 0, "Start", "Human", "Tank", False, None, 0)
+        super().__init__(name, 8, 3, 2, 9, 3, 25, 2, 0, 0, 0, "Start", "Human", "Tank", False, None, 0)
         self.crit_damage = 1.2
 
         self.max_stamina = 20 + self.will_power * 3

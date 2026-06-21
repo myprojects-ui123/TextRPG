@@ -109,33 +109,34 @@ def location__current_fight(main_hero, enemy):
             location_s(main_hero)
             break
         game.cicle()
-        if game.start == 1:     
-            fight.reduce_cooldown_fighter(main_hero)   
-            fight.damage_enemy(main_hero, enemy)
+        if game.start == 1:
             if main_hero.zero_hp(enemy) == True:
                 main_hero.lvl_up()
                 save_game(main_hero)
                 input("Press Enter to continue:")
                 break
             fight.stun(main_hero, enemy)
-            
-            if main_hero.class_character == "Mage":
-                print("")
+
             if main_hero.zero_hp(main_hero) == True:
                 break
+            if main_hero.class_character == "Warrior":    
+                fight.reduce_cooldown_fighter(main_hero)   
+            fight.damage_enemy(main_hero, enemy)
+            if main_hero.class_character == "Assasin":
+                fight.reduce_poison(main_hero, enemy)
+            if main_hero.class_character == "Mage":
+                fight.reduce_dimension(main_hero, enemy)
             
         elif game.start == 2:
 
                 heal.heal_potion(main_hero)
 
-        elif game.start == 3 and main_hero.lvl < 5 and main_hero.class_character == "Warrior":
-            kicked = int(input("1.Kick\n0.Back\n"))
-            if kicked == 1:
-                fight.fighter_kick(main_hero, enemy)
-            elif kicked == 2:
-                print("Back to game\n")
-        elif game.start == 3 and main_hero.lvl < 5 and main_hero.class_character == "Mage":
-            banished = int(input("1.Dimenshion\n0.Back"))
+        elif game.start == 3:
+            assasin_spells(main_hero, enemy)
+            warrior_spells(main_hero, enemy)
+            mage_spells(main_hero, enemy)
+            tank_spells(main_hero, enemy)
+
         elif game.start == 0:
             main_hero = back_to_main_menu(main_hero)
             break

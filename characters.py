@@ -115,7 +115,7 @@ class Hero(Character):
         elif self.class_character == "Assasin":
             self.attack = math.ceil((math.ceil(self.strength * 0.8) + math.ceil(self.dexterity * 1.5)) * 0.7)
             self.dodge = math.ceil(self.dexterity * 0.7)
-            self.crit_chance = math.ceil(self.cunning // 2) + 10
+            self.crit_chance = math.ceil(self.cunning // 2) + 12
 
         elif self.class_character == "Tank":
             self.attack = math.ceil(self.max_hp * 0.08 + self.strength * 0.8)
