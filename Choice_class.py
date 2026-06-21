@@ -201,7 +201,8 @@ class Tank(Hero):
     def __init__(self, name):
         super().__init__(name, 8, 3, 2, 9, 3, 25, 2, 0, 0, 0, "Start", "Human", "Tank", False, None, 0)
         self.crit_damage = 1.2
-
+        self.exp_need = 1000
+        self.armor_cd = 0
         self.max_stamina = 20 + self.will_power * 3
         self.current_stamina = self.max_stamina
         

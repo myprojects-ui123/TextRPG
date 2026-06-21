@@ -54,7 +54,7 @@ def tank_spells(main_hero):
             if main_hero.lvl < 5:
                 Armored = int(input("1.Armor\n0.Back\n"))
             if Armored == 1:
-                fight.fighter_kick(main_hero)
+                fight.armor(main_hero)
                 return True
             elif Armored == 0:
                 return False

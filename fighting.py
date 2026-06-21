@@ -102,7 +102,18 @@ class Fight:
         if attacker.dimension_cd > 0:
             attacker.dimension_cd -= 1
         if enemy.stunned > 0:
-            enemy.sunned -= 1
+            enemy.stunned -= 1
+
+    def armor(self, main_hero):
+        if main_hero.armor_cd > 0:
+            print(f"Armor on cooldown, {main_hero.armor_cd} turns left")
+            return False
+        print("Armor is activated!\n")
+        main_hero.armor_cd = 3
+
+    def reduce_armor(self, main_hero):
+        if main_hero.armor_cd > 0:
+            main_hero.armor_cd -= 1
 
     def dodge_enemy(self, attacker, enemy):
         print(f"{attacker.name} is attacking\n")
@@ -121,6 +132,10 @@ class Fight:
             return
         else: 
             damage = self.crit(attacker, damage)
+            if enemy.class_character == "Tank":
+                if enemy.armor_cd > 0:
+                    enemy.current_hp -= int(damage * 0.85)
+                    return damage
             enemy.current_hp -= damage
             return damage
 class Heal:

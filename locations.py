@@ -2,6 +2,7 @@ from fighting import *
 from Story import Game
 from saves import *
 from menu import back_to_main_menu
+from Spells import spells
 
 fight = Fight()
 game = Game()
@@ -56,13 +57,11 @@ def location_s(main_hero):
             if not location_road(main_hero):
                 main_hero = back_to_main_menu(main_hero)
                 break
-        
-
         elif main_hero.location == "bar":
             if not location_bar(main_hero):
                 main_hero = back_to_main_menu(main_hero)
                 break
-
+        break
 def location__first_fight(main_hero, small_ogr):
     fight = Fight()
     game = Game()
@@ -126,16 +125,14 @@ def location__current_fight(main_hero, enemy):
                 fight.reduce_poison(main_hero, enemy)
             if main_hero.class_character == "Mage":
                 fight.reduce_dimension(main_hero, enemy)
-            
+            if main_hero.class_character == "Tank":
+                fight.reduce_armor(main_hero)
         elif game.start == 2:
 
                 heal.heal_potion(main_hero)
 
         elif game.start == 3:
-            assasin_spells(main_hero, enemy)
-            warrior_spells(main_hero, enemy)
-            mage_spells(main_hero, enemy)
-            tank_spells(main_hero, enemy)
+            spells(main_hero, enemy)
 
         elif game.start == 0:
             main_hero = back_to_main_menu(main_hero)
