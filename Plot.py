@@ -1,13 +1,17 @@
 from locations import location_s
 
-def chapter_1_1(main_hero):
-    if main_hero.first_fight == True and main_hero.chapter == 1:
-        main_hero.chapter = "Find the Captian"
-        location_s(main_hero)
-        main_hero.story = 2
+def chapter_1_0(main_hero):
+    if main_hero.chapter == 1.0:
+        main_hero.story = "Find the Captian"
+        if not location_s(main_hero):
+            return False
+        main_hero.story = "Completed"
+        if main_hero.story == "Completed":
+            main_hero.chapter = 1.1
 
-def chapter_1_2(main_hero):
-    if main_hero.first_fight == True and main_hero.chapter == 2:
-        main_hero.chapter = "Find the captain"
-        location_s(main_hero)
-        main_hero.story = 3
+def chapter_1_1(main_hero):
+    if main_hero.chapter == 1.1:
+        main_hero.story = "Find the captain"
+        if not location_s(main_hero):
+            return False
+        main_hero.chapter = 1.2

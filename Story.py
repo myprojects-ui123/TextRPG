@@ -81,32 +81,7 @@ def start_story(main_hero):
                 print("Try Again\n")    
 
 class Game:
-    def choice_hero(self):
-        while True:
-            fault = None
-            try:
-                self.start_game = int(input("1.Start Game\n2.Load Game\n3.Change the character(only in main menu)\n0.Exit\n"))
-                if self.start_game == 0:
-                    break
-                if self.start_game == 1:
-                    fault = int(input("Do you want to start a new game?\n1.Yes\n2.No\n"))
-                    if fault == 1:
-                        break
-                if self.start_game == 2:
-                    return load_game()
-                
-                if self.start_game == (3):
-                    print("Developing\n")
-
-                else:
-                    print("Wrong\n")
-            except ValueError:
-                print("Try again:\n")
     
-    
-
-    
-
     def cicle(self):
        while True:
             try:

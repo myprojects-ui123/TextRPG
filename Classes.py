@@ -10,123 +10,144 @@ def choose_name(name_Main):
     return name_Main
 
 def choice_start(name_Main, main_hero):
-    name_class_Main = int(input("Choose your class:\n1.Warrior\n2.Mage\n3.Assasin\n4.Tank\n"))
-    if name_class_Main == 1:
-        print(f"""Characteristics:\n
-Warrior:
-    Strength: 13
-    Dexterity: 7
-    Magic: 3
-    WillPower: 9
-    Cunning: 5
-    Physique: 13
-              
-Uniqueness from start:
-
-    Speciality:
-        - Berserk
-        - Mage Hunter
-
-    Advantages:
-
-        - No Major Advantages
-              
-    Flaws:
-        - No critical Flaws
-              """)
-        name_class_Main = int(input("Do you still want to choose this class:\n1.Yes\n2.No\n"))
+    while True:
+        name_class_Main = int(input("Choose your class:\n1.Warrior\n2.Mage\n3.Assasin\n4.Tank\n"))
         if name_class_Main == 1:
-            main_hero = Warrior(name_Main)
-            return main_hero
-            
-    
-    elif name_class_Main == 2:
-        print(f"""Characteristics:\n
-Mage:
-    Strength: 3
-    Dexterity: 5
-    Magic: 18
-    WillPower: 13
-    Cunning: 4
-    Physique: 7
-              
-Uniqueness from start:
+            print(f"""Characteristics:\n
+    Warrior:
+        Strength: 13
+        Dexterity: 7
+        Magic: 3
+        WillPower: 9
+        Cunning: 5
+        Physique: 13
+                
+    Uniqueness from start:
 
-    Speciality:
-        - Healer
-        - Mage of blood
+        Speciality:
+            - Berserk
+            - Mage Hunter
 
-    Advantages:
+        Advantages:
 
-        - Ignore Dodge
-        - High Damage
-              
-    Flaws:
+            - No Major Advantages
+                
+        Flaws:
+            - No critical Flaws
+                """)
+            name_class_Main = int(input("Do you still want to choose this class:\n1.Yes\n2.No\n"))
+            if name_class_Main == 1:
+                main_hero = Warrior(name_Main)
+                return main_hero
+            elif name_class_Main == 2:
+                continue
 
-        - Low HP
-        - Critical Chance = 0%
+            else:
+                print("Incorrect Choice\n")
+                
+        
+        elif name_class_Main == 2:
+            print(f"""Characteristics:\n
+    Mage:
+        Strength: 3
+        Dexterity: 5
+        Magic: 18
+        WillPower: 13
+        Cunning: 4
+        Physique: 7
+                
+    Uniqueness from start:
 
-              """)
-        name_class_Main = int(input("Do you still want to choose this class:\n1.Yes\n2.No\n"))
-        if name_class_Main == 1:
-            main_hero = Mage(name_Main)
-            return main_hero
-    elif name_class_Main == 3:
-        print(f"""Characteristics:\n
-Assasin:
-    Strength: 8
-    Dexterity: 17
-    Magic: 4
-    WillPower: 6
-    Cunning: 10
-    Physique: 5
-Uniqueness from start:
+        Speciality:
+            - Healer
+            - Mage of blood
 
-    Speciality:
-        - Duelist
-        - Suicide
+        Advantages:
 
-    Advantages:
+            - Ignore Dodge
+            - High Damage
+                
+        Flaws:
 
-        - Critical Chance: +10%
-        - Critical Damage: X2
-              
-    Flaws:
+            - Low HP
+            - Critical Chance = 0%
 
-        - Low HP  
+                """)
+            name_class_Main = int(input("Do you still want to choose this class:\n1.Yes\n2.No\n"))
+            if name_class_Main == 1:
+                main_hero = Mage(name_Main)
+                return main_hero
+            elif name_class_Main == 2:
+                continue
 
-              """)
-        name_class_Main = int(input("Do you still want to choose this class:\n1.Yes\n2.No\n"))
-        if name_class_Main == 1:
-            main_hero = Assasin(name_Main)
-            return main_hero
-    elif name_class_Main == 4:
-        print(f"""Characteristics:\n
-Tank:
-    Strength: 8
-    Dexterity: 3
-    Magic: 2
-    WillPower: 9
-    Cunning: 3
-    Physique: 25
+            else:
+                print("Incorrect Choice\n")
+        elif name_class_Main == 3:
+            print(f"""Characteristics:\n
+    Assasin:
+        Strength: 8
+        Dexterity: 17
+        Magic: 4
+        WillPower: 6
+        Cunning: 10
+        Physique: 5
+    Uniqueness from start:
 
-Uniqueness from start:
+        Speciality:
+            - Duelist
+            - Suicide
 
-    Speciality:
-        - Golem
-        - Battle Tank
+        Advantages:
 
-    Advantages:
+            - Critical Chance: +10%
+            - Critical Damage: X2
+                
+        Flaws:
 
-        - High HP
-        - Attack from HP
-              
-    Flaws:
+            - Low HP  
 
-        - Low Dodge  
+                """)
+            name_class_Main = int(input("Do you still want to choose this class:\n1.Yes\n2.No\n"))
+            if name_class_Main == 1:
+                main_hero = Assasin(name_Main)
+                return main_hero
+            elif name_class_Main == 2:
+                continue
 
-              """)
-        name_class_Main = int(input("Do you still want to choose this class:\n1.Yes\n2.No\n"))
-        if name_class_Main == 1:
-            main_hero = Tank(name_Main)
-            return main_hero
+            else:
+                print("Incorrect Choice\n")
+        elif name_class_Main == 4:
+            print(f"""Characteristics:\n
+    Tank:
+        Strength: 8
+        Dexterity: 3
+        Magic: 2
+        WillPower: 9
+        Cunning: 3
+        Physique: 25
+
+    Uniqueness from start:
+
+        Speciality:
+            - Golem
+            - Battle Tank
+
+        Advantages:
+
+            - High HP
+            - Attack from HP
+                
+        Flaws:
+
+            - Low Dodge  
+
+                """)
+            name_class_Main = int(input("Do you still want to choose this class:\n1.Yes\n2.No\n"))
+            if name_class_Main == 1:
+                main_hero = Tank(name_Main)
+                return main_hero
+            elif name_class_Main == 2:
+                continue
+
+            else:
+                print("Incorrect Choice\n")

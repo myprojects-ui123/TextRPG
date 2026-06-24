@@ -1,67 +1,129 @@
 from fighting import *
 from Story import Game
 from saves import *
-from menu import back_to_main_menu
+from menu import Menu
 from Spells import spells
+from Enemy_list import *
+
 
 fight = Fight()
 game = Game()
 heal = Heal()
+menu = Menu()
 
 def location_road(main_hero):
     if main_hero.location == "Road":
-        a = int(input("1.City\n2.Forest\n3.Village\n4.Main_menu"))
+        a = int(input("1.City\n2.North Forest\n3.Village\n4.Goal\n5.Main_menu\n"))
+        if a == 1:
+            main_hero.location = "city"
+        elif a == 2:
+            main_hero.location = "North Forest"
+        elif a == 3:
+            main_hero.location = "Village"
 
+        elif a == 4:
+            print(main_hero.story)
+            
+        elif a == 5:
+            return False
+        else:
+            print("Incorrect choice\n")
+        return main_hero.location
 
 def location_village(main_hero):
     if main_hero.location == "Village":
-        a = int(input("1.Home\n2.Market\n3.Road\n4.Main_menu"))
+        a = int(input("1.Home\n2.Market\n3.Road\n4.Goal\n5.Main_menu\n"))
         if a == 1:
             main_hero.location = "Home"
-            return main_hero.location
         elif a == 2:
             main_hero.location = "Market"
-            return main_hero.location
         elif a == 3:
             main_hero.locatiion = "Road"
-            return main_hero.location
+            
         elif a == 4:
-            return False
+            print(main_hero.story)
 
+        elif a == 5:
+            return False
+        return main_hero.location
 def location_city(main_hero):
-    a = int(input("1.Site\n2.Bar\n3.Road\n4.Main_menu"))
-    if a == 1:
-        main_hero.location = "Site"
+    if main_hero.location == "city":
+        a = int(input("1.Site\n2.Bar\n3.Road\n4.Goal\n5.Main_menu\n"))
+        if a == 1:
+            main_hero.location = "Site"
+        elif a == 2:
+            main_hero.location = "Bar"
+        elif a == 3:
+            main_hero.location = "Road"
+        elif a == 4:
+            print(main_hero.story)
+        elif a == 5:
+            return False
+        else:
+            print("Try again\n")
         return main_hero.location
 
-def location_North_Forest():
-    return "North_Forest"
+
+def location_North_Forest(main_hero):
+    if main_hero.location == "North Forest":
+        while True:
+            a = int(input("1.Hunt\n2.Pick Berries\n3.Road\n4.Goal\n5.Main_menu\n"))
+            if a == 1:
+                hunt = random.randint(1, 100)
+                if hunt <= 30:
+                    print("You attacked Ogr!\n")
+                    enemy = Ogr
+                    if not location__current_fight(main_hero, enemy):
+                        return "dead"
+                elif hunt >= 31 and hunt <= 35:
+                    print("You found gold!\n")
+                    main_hero.gold += 5
+            elif a == 2:
+                main_hero.location = "Bar"
+            elif a == 3:
+                main_hero.location = "Road"
+                return main_hero.location
+            elif a == 4:
+                print(main_hero.story)
+            elif a == 5:
+                return False
+            else:
+                print("Try again\n")
+            
 
 def location_brothel():
     return "Brothel"
 
-def location_bar():
-    return "Bar"
+def location_bar(main_hero):
+    if main_hero.location == "Bar":
+        print("")
 
 def location_s(main_hero):
     while True:
         if main_hero.location == "Village":
             if not location_village(main_hero):
-                main_hero = back_to_main_menu(main_hero)
-                break
+                if menu.back_to_main_menu(main_hero):
+                    return False
         elif main_hero.location == "city":
             if not location_city(main_hero):
-                main_hero = back_to_main_menu(main_hero)
-                break
+                if menu.back_to_main_menu(main_hero):
+                    return False
         elif main_hero.location == "Road":
             if not location_road(main_hero):
-                main_hero = back_to_main_menu(main_hero)
-                break
+                if menu.back_to_main_menu(main_hero):
+                    return False
         elif main_hero.location == "bar":
             if not location_bar(main_hero):
-                main_hero = back_to_main_menu(main_hero)
-                break
-        break
+                if menu.back_to_main_menu(main_hero):
+                    return False
+        elif main_hero.location == "North Forest":
+            check_point = location_North_Forest(main_hero)
+            if not check_point:
+                if menu.back_to_main_menu(main_hero):
+                    return False
+            if check_point == "dead":
+                return False
+            
 def location__first_fight(main_hero, small_ogr):
     fight = Fight()
     game = Game()
@@ -75,7 +137,7 @@ def location__first_fight(main_hero, small_ogr):
                 main_hero.lvl_up()
                 main_hero.location = "city"
                 main_hero.first_fight = True
-                main_hero.chapter = 1
+                main_hero.chapter = 1.0
                 save_game(main_hero)
                 input("Press Enter to continue:")
                 main_hero.victory_text()
@@ -113,11 +175,11 @@ def location__current_fight(main_hero, enemy):
                 main_hero.lvl_up()
                 save_game(main_hero)
                 input("Press Enter to continue:")
-                break
+                return True
             fight.stun(main_hero, enemy)
 
             if main_hero.zero_hp(main_hero) == True:
-                break
+                return False
             if main_hero.class_character == "Warrior":    
                 fight.reduce_cooldown_fighter(main_hero)   
             fight.damage_enemy(main_hero, enemy)
@@ -135,7 +197,7 @@ def location__current_fight(main_hero, enemy):
             spells(main_hero, enemy)
 
         elif game.start == 0:
-            main_hero = back_to_main_menu(main_hero)
             break
+
         print(f"{main_hero.name}\nHP:{main_hero.current_hp}\n")
         print(f"{enemy.name}\nHP:{enemy.current_hp}\n")

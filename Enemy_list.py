@@ -17,6 +17,24 @@ def create_Ogr():
                   "Ogr",
                   "Warrior")
 
+def create_big_Ogr():
+    return Enemy("Big Ogr",
+                 10,
+                 5,
+                 2,
+                 8,
+                 3,
+                 9,
+                 0,
+                 0,
+                 1.5,
+                 0,
+                 0,
+                 None,
+                 "Ogr",
+                 "Warrior")
+
+Big_Ogr = create_big_Ogr()
 
 
 Ogr = create_Ogr()

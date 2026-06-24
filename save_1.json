@@ -1,21 +1,24 @@
 {
     "name": "Mike12",
     "Strength": 8,
-    "Dexterity": 17,
+    "Dexterity": 20,
     "Magic": 4,
     "WillPower": 6,
     "Cunning": 10,
     "Physique": 5,
     "Lvl": 2,
-    "Species": "Human",
+    "Species": [
+        "Species"
+    ],
     "class": "Assasin",
-    "Current_hp": 65,
+    "Current_hp": 39,
     "Max_hp": 65,
     "Max_Stamina": 38,
     "Experience": 125,
     "Exp Need": 1000,
-    "Gold": 5,
+    "Gold": 45,
     "Heal_potion": 0,
-    "Location": "Start",
-    "Prologue": false
+    "Location": "city",
+    "Prologue": true,
+    "Chapter": 1.0
 }

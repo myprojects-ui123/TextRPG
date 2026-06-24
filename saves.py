@@ -24,7 +24,8 @@ def save(main_hero):
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
         "Location": main_hero.location,
-        "Prologue": main_hero.first_fight
+        "Prologue": main_hero.first_fight,
+        "Chapter": main_hero.chapter
 }
     else:
         return {
@@ -46,7 +47,8 @@ def save(main_hero):
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
         "Location": main_hero.location,
-        "Prologue": main_hero.first_fight
+        "Prologue": main_hero.first_fight,
+        "Chapter": main_hero.chapter
         }
 
 def save_game(main_hero):
@@ -64,22 +66,44 @@ def load_game():
     elif save_data["class"] == "Tank":
         main_hero = Tank(save_data["name"])
 
-    main_hero.strength = save_data["Strength"]
-    main_hero.dexterity = save_data["Dexterity"]
-    main_hero.magic = save_data["Magic"]
-    main_hero.will_power = save_data["WillPower"]
-    main_hero.cunning = save_data["Cunning"]
-    main_hero.physique = save_data["Physique"]
-    main_hero.lvl = save_data["Lvl"] 
-    main_hero.Species = ["Species"] 
-    main_hero.class_character = save_data["class"] 
-    main_hero.current_hp = save_data["Current_hp"] 
-    main_hero.max_hp = save_data["Max_hp"]
-    main_hero.max_stamina = save_data["Max_Stamina"]
-    main_hero.exp = save_data["Experience"]
-    main_hero.gold = save_data["Gold"]
-    main_hero.heal_potion = save_data["Heal_potion"]
-    main_hero.location = save_data["Location"]
-    main_hero.first_fight = save_data["Prologue"]
-    return main_hero
+    if main_hero.class_character == "Mage":
+        main_hero.strength = save_data["Strength"]
+        main_hero.dexterity = save_data["Dexterity"]
+        main_hero.magic = save_data["Magic"]
+        main_hero.will_power = save_data["WillPower"]
+        main_hero.cunning = save_data["Cunning"]
+        main_hero.physique = save_data["Physique"]
+        main_hero.lvl = save_data["Lvl"] 
+        main_hero.Species = ["Species"] 
+        main_hero.class_character = save_data["class"] 
+        main_hero.current_hp = save_data["Current_hp"] 
+        main_hero.max_hp = save_data["Max_hp"]
+        main_hero.max_mana = save_data["Max_Mana"]
+        main_hero.exp = save_data["Experience"]
+        main_hero.gold = save_data["Gold"]
+        main_hero.heal_potion = save_data["Heal_potion"]
+        main_hero.location = save_data["Location"]
+        main_hero.first_fight = save_data["Prologue"]
+        main_hero.chapter = save_data["Chapter"]
+        return main_hero
 
+    else:
+        main_hero.strength = save_data["Strength"]
+        main_hero.dexterity = save_data["Dexterity"]
+        main_hero.magic = save_data["Magic"]
+        main_hero.will_power = save_data["WillPower"]
+        main_hero.cunning = save_data["Cunning"]
+        main_hero.physique = save_data["Physique"]
+        main_hero.lvl = save_data["Lvl"] 
+        main_hero.Species = ["Species"] 
+        main_hero.class_character = save_data["class"] 
+        main_hero.current_hp = save_data["Current_hp"] 
+        main_hero.max_hp = save_data["Max_hp"]
+        main_hero.max_stamina = save_data["Max_Stamina"]
+        main_hero.exp = save_data["Experience"]
+        main_hero.gold = save_data["Gold"]
+        main_hero.heal_potion = save_data["Heal_potion"]
+        main_hero.location = save_data["Location"]
+        main_hero.first_fight = save_data["Prologue"]
+        main_hero.chapter = save_data["Chapter"]
+        return main_hero
