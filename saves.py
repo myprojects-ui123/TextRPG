@@ -25,7 +25,9 @@ def save(main_hero):
         "Heal_potion": main_hero.heal_potion,
         "Location": main_hero.location,
         "Prologue": main_hero.first_fight,
-        "Chapter": main_hero.chapter
+        "Chapter": main_hero.chapter,
+        "Main_story": main_hero.story,
+        "Side_quest": main_hero.side_quest
 }
     else:
         return {
@@ -48,7 +50,9 @@ def save(main_hero):
         "Heal_potion": main_hero.heal_potion,
         "Location": main_hero.location,
         "Prologue": main_hero.first_fight,
-        "Chapter": main_hero.chapter
+        "Chapter": main_hero.chapter,
+        "Main_story": main_hero.story,
+        "Side_quest": main_hero.side_quest
         }
 
 def save_game(main_hero):
@@ -85,6 +89,8 @@ def load_game():
         main_hero.location = save_data["Location"]
         main_hero.first_fight = save_data["Prologue"]
         main_hero.chapter = save_data["Chapter"]
+        main_hero.story = save_data["Main_story"]
+        main_hero.side_quest = save_data["Side_quest"]
         return main_hero
 
     else:
@@ -106,4 +112,6 @@ def load_game():
         main_hero.location = save_data["Location"]
         main_hero.first_fight = save_data["Prologue"]
         main_hero.chapter = save_data["Chapter"]
+        main_hero.story = save_data["Main_story"]
+        main_hero.side_quest = save_data["Side_quest"]
         return main_hero

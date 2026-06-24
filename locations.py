@@ -46,6 +46,7 @@ def location_village(main_hero):
         elif a == 5:
             return False
         return main_hero.location
+    
 def location_city(main_hero):
     if main_hero.location == "city":
         a = int(input("1.Site\n2.Bar\n3.Road\n4.Goal\n5.Main_menu\n"))
@@ -54,7 +55,10 @@ def location_city(main_hero):
         elif a == 2:
             main_hero.location = "Bar"
         elif a == 3:
-            main_hero.location = "Road"
+            if main_hero.chapter == 1.0:
+                print("Access Denied\n")
+            else:
+                main_hero.location = "Road"
         elif a == 4:
             print(main_hero.story)
         elif a == 5:
@@ -96,7 +100,56 @@ def location_brothel():
 
 def location_bar(main_hero):
     if main_hero.location == "Bar":
-        print("")
+        if main_hero.chapter == 1.0 and main_hero.side_quest == None:
+            print("Well, well , well, look, who is here...\n")
+            time.sleep(2)
+            print("You turned around and saw your friend, Nathan\nYou:Nathan, are you still alive?:)\n")
+            time.sleep(2)
+            print("Nathan: Of course I am. I'm not as weak as you, ha ha!\n")
+            time.sleep(2)
+            print("You: Glad to see you. What are you doing here?")
+            time.sleep(2)
+            print("Nathan: The Championship of the Kingdom starting soon in this city.\nAs the one of the strongest soldiers, I must be here")
+            time.sleep(2)
+            print("You: Wait, in this city?!\nToday?!")
+            time.sleep(2)
+            try:
+                a = int(input(("Nathan: Yeah, if wanna participate, I can put in a good word for you, so what do you think?\n1.Yeah\n2.No, thanks, mate\n")))
+                if a == 1:
+                    print("You: Yeah, sure")
+                    time.sleep(2)
+                    print("Nathan: Good, go to the site later, see ya\n")
+                    time.sleep(2)
+                    main_hero.side_quest = "Meet Nathan on the SIte"
+                if a == 2:
+                    print("You: No, thanks\n")
+                    time.sleep(2)
+                    print("Nathat: Okay, but if you change your mind, meet me in the Site\n")
+                    main_hero.side_quest = "Meet Nathan on the SIte"
+            except ValueError:
+                print("Try again\n")
+        if main_hero.chapter == 1.0:
+            while True:
+                try:
+                    a = int(input("1.City\n2.Goal\n3.Main_menu\n"))
+                    if a == 1:
+                        main_hero.location = "city"
+                    if a == 2:
+                        print(main_hero.story)
+                        print(main_hero.side_quest)
+                    if a == 3:
+                        return False
+                except ValueError:
+                    print("Try again")
+                return main_hero.location
+        try:
+            a = int(input("1.Drink\n2.Food\n3.City\n4.Goal\n5.Main_menu\n"))
+            if a == 3:
+                main_hero.location == "city"
+                return main_hero.location
+        except ValueError:
+            print("Try again\n")
+        return main_hero.location
 
 def location_s(main_hero):
     while True:
@@ -112,7 +165,7 @@ def location_s(main_hero):
             if not location_road(main_hero):
                 if menu.back_to_main_menu(main_hero):
                     return False
-        elif main_hero.location == "bar":
+        elif main_hero.location == "Bar":
             if not location_bar(main_hero):
                 if menu.back_to_main_menu(main_hero):
                     return False

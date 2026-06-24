@@ -47,7 +47,8 @@ class Hero(Character):
             class_character,
             first_fight,
             story,
-            chapter):
+            chapter,
+            side_quest):
             self.name = name
             self.strength = strength
             self.dexterity = dexterity
@@ -65,6 +66,7 @@ class Hero(Character):
             self.first_fight = first_fight
             self.story = story
             self.chapter = chapter
+            self.side_quest = side_quest
 
             self.update_stats()
 
@@ -96,7 +98,7 @@ class Hero(Character):
             self.gets_hp(enemy)
             return True
         elif self.current_hp == 0:
-            print("You died...\n")
+            print("You lost...\n")
             return False
 
     def update_stats(self):
