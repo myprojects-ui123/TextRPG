@@ -55,7 +55,7 @@ Soldier_chapter_0 = Enemy("Blacksmith",
                           "Human",
                           "Warrior")
 
-Soldier_chapter_0_2 = Enemy("Soldier",
+Soldier_chapter_0_2 = Enemy("Champion",
                             8,
                             7,
                             2,

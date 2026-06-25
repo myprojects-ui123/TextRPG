@@ -5,6 +5,7 @@ from characters import Hero
 class Warrior(Hero):
     def __init__(self, name):
         super().__init__(name, 13, 7, 3, 9, 5, 13, 1, 0, 0, 0, "Start ", "Human", "Warrior", False, None, 0.0, None)
+        self.tournament_site = None
         self.kick_stun = 2
         self.kick_cd = 0
         self.crit_damage = 1.5

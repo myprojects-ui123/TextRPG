@@ -48,13 +48,9 @@ class Fight:
 
 
     def stun(self, main_hero, enemy):
-        if main_hero.class_character == "Warrior":
-            if enemy.stunned > 0:
-                print(f"{enemy.name} is stunned and skips the turn!\n")
+        if enemy.stunned > 0:
+            print(f"{enemy.name} is stunned and skips the turn!\n")
             enemy.stunned -= 1
-        elif main_hero.class_character == "Mage":
-            if enemy.stunned > 0:
-                print(f"{enemy.name} is stunned and skips the turn!\n")
             
         else:
             fight = Fight()
