@@ -116,6 +116,7 @@ class Mage(Hero):
         self.dimension_cd = 0
         self.crit_damage = 0
         self.exp_need = 1000
+        self.mage_side = None
         
         self.update_stats()
         self.update_stats_m()
@@ -161,6 +162,7 @@ class Assasin(Hero):
         self.exp_need = 1000
         self.poison_cd = 0
         self.crit_damage = 2
+        self.assasin_side = None
 
         self.update_stats()
         self.update_stats_a()
@@ -206,6 +208,7 @@ class Tank(Hero):
         self.armor_cd = 0
         self.max_stamina = 20 + self.will_power * 3
         self.current_stamina = self.max_stamina
+        self.tank_side = None
         
         self.update_stats()
         self.update_stats_t()

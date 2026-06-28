@@ -128,7 +128,7 @@ def location_site(main_hero):
                 enemy = Soldier_chapter_0
                 if not location__current_fight(main_hero, enemy):
                     main_hero.tournament_site = "Lose_Quarter"
-                    main_hero.side_quest == None
+                    main_hero.side_quest = None
                     print("BlackSmith: You fought well, son, you're just lack of an experience.\nMaybe next year\n")
                     main_hero.exp += 100
                     main_hero.update_stats()
@@ -142,7 +142,7 @@ def location_site(main_hero):
                 enemy = Soldier_chapter_0_2
                 if not location__current_fight(main_hero, enemy):
                     main_hero.tournament_site = "Lose_Semi"
-                    main_hero.side_quest == None
+                    main_hero.side_quest = None
                     print("Judge: And the last year Champion goes to his second award\n")
                     time.sleep(2)
                     print("Champion: You did well, man. Finaaly I was fighting seriosly for a long time.\nHope to see in the next year\n")
@@ -160,7 +160,7 @@ def location_site(main_hero):
                 enemy = Champion_chapter
                 if not location__current_fight(main_hero, enemy):
                     main_hero.tournament_site = "Lose_Final"
-                    main_hero.side_quest == None
+                    main_hero.side_quest = None
                     print("Judge: Nathan became the new Champion of the Tournament!!!\n")
                     time.sleep(2)
                     print("Nathan:That was so close, mate, you almost did it. I hope we meet again soon, but now I need to go with my commander. See ya\n")
@@ -169,30 +169,29 @@ def location_site(main_hero):
                     main_hero.gold += 30
                     main_hero.exp += 150
                     main_hero.update_stats()
+                main_hero.update_stats()
                 print("You became the champion!!!\n")
                 time.sleep(3)
-                main_hero.tournament_site = "Lose_Final"
-                main_hero.side_quest == None
+                main_hero.tournament_site = "Winner"
+                main_hero.side_quest = None
                 print("You get 50 gold and 250 Exp!\n")
                 main_hero.gold += 50
                 main_hero.exp += 250
-
-                main_hero.update_stats()
-                return
-            if main_hero.chapter == 1.0:
-                while True:
-                    try:
-                        a = int(input("1.City\n2.Goal\n3.Main_menu\n"))
-                        if a == 1:
-                            main_hero.location = "city"
-                        if a == 2:
-                            print(main_hero.story)
-                            print(main_hero.side_quest)
-                        if a == 3:
-                            return False
-                    except ValueError:
-                        print("Try again")
-                    return main_hero.location
+                return True
+        if main_hero.chapter == 1.0:
+            while True:
+                try:
+                    a = int(input("1.City\n2.Goal\n3.Main_menu\n"))
+                    if a == 1:
+                        main_hero.location = "city"
+                    elif a == 2:
+                        print(main_hero.story)
+                        print(main_hero.side_quest)
+                    elif a == 3:
+                        return False
+                except ValueError:
+                    print("Try again")
+                return main_hero.location
                 
 
 def location_brothel():
@@ -200,7 +199,7 @@ def location_brothel():
 
 def location_bar(main_hero):
     if main_hero.location == "Bar":
-        if main_hero.chapter == 1.0 and main_hero.class_character == "Warrior" and main_hero.side_quest == None:
+        if main_hero.chapter == 1.0 and main_hero.class_character == "Warrior" and main_hero.side_quest == None and main_hero.tournament_site == None:
             print("Well, well , well, look, who is here...\n")
             time.sleep(2)
             print("You turned around and saw your friend, Nathan\nYou:Nathan, are you still alive?:)\n")
@@ -234,10 +233,10 @@ def location_bar(main_hero):
                     a = int(input("1.City\n2.Goal\n3.Main_menu\n"))
                     if a == 1:
                         main_hero.location = "city"
-                    if a == 2:
+                    elif a == 2:
                         print(main_hero.story)
                         print(main_hero.side_quest)
-                    if a == 3:
+                    elif a == 3:
                         return False
                 except ValueError:
                     print("Try again")
@@ -257,7 +256,7 @@ def location_s(main_hero):
             if not location_village(main_hero):
                 if menu.back_to_main_menu(main_hero):
                     return False
-        elif location_site(main_hero):
+        elif main_hero.location == "Site":
             if not location_site(main_hero):
                 if menu.back_to_main_menu(main_hero):
                     return False
