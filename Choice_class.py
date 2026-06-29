@@ -1,5 +1,6 @@
 import time
 from characters import Hero
+from Inventory import *
 
 
 class Warrior(Hero):
@@ -12,8 +13,16 @@ class Warrior(Hero):
         self.exp_need = 1000
         self.max_stamina = 20 + self.will_power * 3
         self.current_stamina = self.max_stamina
+        self.weapon = fists
+        self.inventory = {}
         self.update_stats()
         self.update_stats_w()
+
+    def add_item(self, item, amount=1):
+        if item in self.inventory:
+            self.inventory[item] += amount
+        else:
+            self.inventory = amount
 
     def lvl_up(self):
         if self.exp >= self.exp_need:
@@ -60,7 +69,12 @@ class Warrior(Hero):
                For a long time I didn't see such an ordinary and young soldier
                that can fight so discipline and good, What your Name?""")
         time.sleep(5)
-        print(f"My name is {self.name}")
+        print(f"My name is {self.name}\n")
+        time.sleep(3)
+        print("Captain Mave: Very well. When you ready meet me in the Fortress\n")
+        time.sleep(3)
+        print("You: Of course\n")
+        time.sleep(2)
 
     def prologue(self):
         print("December 8:53, North Forest")
@@ -116,7 +130,9 @@ class Mage(Hero):
         self.dimension_cd = 0
         self.crit_damage = 0
         self.exp_need = 1000
+        self.weapon = old_staff
         self.mage_side = None
+        self.inventory = {}
         
         self.update_stats()
         self.update_stats_m()
@@ -162,7 +178,9 @@ class Assasin(Hero):
         self.exp_need = 1000
         self.poison_cd = 0
         self.crit_damage = 2
+        self.weapon = fists
         self.assasin_side = None
+        self.inventory = {}
 
         self.update_stats()
         self.update_stats_a()
@@ -206,8 +224,10 @@ class Tank(Hero):
         self.crit_damage = 1.2
         self.exp_need = 1000
         self.armor_cd = 0
+        self.inventory = {}
         self.max_stamina = 20 + self.will_power * 3
         self.current_stamina = self.max_stamina
+        self.weapon = fists
         self.tank_side = None
         
         self.update_stats()

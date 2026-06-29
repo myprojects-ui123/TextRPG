@@ -26,17 +26,30 @@ class Fight:
         if attacker.kick_cd > 0:
             print(f"Kick on cooldown, {attacker.kick_cd} turns left\n")
             return False
+        if attacker.current_stamina < 25:
+            print("Not Enough Mana\n")
+            return False
         damage = math.ceil(attacker.strength * 1.25)
 
         enemy.current_hp -= damage
         enemy.stunned = 1
-        
+        attacker.current_stamina -= 25
         print(f'{enemy.name} is stunned!\n')
 
         attacker.kick_cd = 2
         print(f"{enemy.name}: -{damage}\n")
 
         attacker.normalize_hp(enemy)
+
+    def heal_stamina(self, main_hero):
+        main_hero.current_stamina += 5
+        if main_hero.current_stamina > main_hero.max_stamina:
+            main_hero.current_stamina = main_hero.max_stamina
+    
+    def heal_mana(self, main_hero):
+        main_hero.current_mana += 5
+        if main_hero.current_mana > main_hero.max_mana:
+            main_hero.current_mana = main_hero.max_mana
 
     def reduce_cooldown_fighter(self, main_hero, enemy):
         if main_hero.kick_cd > 0:
@@ -116,7 +129,7 @@ class Fight:
         damage = random.randint(int(attacker.attack * 0.5), attacker.attack)
         if attacker.class_character == "Mage":
             if enemy.stunned > 0:
-                enemy.current_hp -= int(damage * 0.6)
+                enemy.current_hp -= int(damage * 0.6) + attacker.weapon.damage
                 return damage
             else:
                 enemy.current_hp -= damage
@@ -127,13 +140,14 @@ class Fight:
             time.sleep(1)
             return
         else: 
-            damage = self.crit(attacker, damage)
+            damage = self.crit(attacker, damage) + attacker.weapon.damage
             if enemy.class_character == "Tank":
                 if enemy.armor_cd > 0:
                     enemy.current_hp -= int(damage * 0.85)
                     return damage
             enemy.current_hp -= damage
             return damage
+        
 class Heal:
 
     def heal_potion(self, hero):

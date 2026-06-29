@@ -1,4 +1,5 @@
-from enemies import Enemy
+from characters import Enemy
+from Inventory import *
 
 def create_Ogr():
     return Enemy("Ogr", 
@@ -13,6 +14,7 @@ def create_Ogr():
                   1.5,
                   0,
                   0,
+                  fists_enemy,
                   None,
                   "Ogr",
                   "Warrior")
@@ -30,12 +32,32 @@ def create_big_Ogr():
                  1.5,
                  0,
                  0,
+                 strong_hands,
                  None,
                  "Ogr",
                  "Warrior")
 
-Big_Ogr = create_big_Ogr()
+def create_bandit():
+    return Enemy("Bandit",
+                 7,
+                 8,
+                 2,
+                 6,
+                 6,
+                 7,
+                 0,
+                 0,
+                 2.0,
+                 0,
+                 0,
+                 blades,
+                 None,
+                 "Human",
+                 "Assasin")
 
+Bandit = create_bandit()
+
+Big_Ogr = create_big_Ogr()
 
 Ogr = create_Ogr()
 
@@ -51,6 +73,7 @@ Soldier_chapter_0 = Enemy("Blacksmith",
                           1.5,
                           0,
                           0,
+                          fists_enemy,
                           None,
                           "Human",
                           "Warrior")
@@ -67,6 +90,7 @@ Soldier_chapter_0_2 = Enemy("Champion",
                             1.5,
                             0,
                             0,
+                            steel_blade,
                             None,
                             "Human",
                             "Warrior")
@@ -83,6 +107,7 @@ Champion_chapter = Enemy("Nathan",
                            1.5,
                            0,
                            0,
+                           steel_blade,
                            None,
                            "Human",
                            "Warrior")
@@ -99,6 +124,7 @@ small_ogr = Enemy("Small_Ogr",
                   1.5,
                   0,
                   0,
+                  fists_enemy,
                   "Start",
                   "Ogr",
                   "Warrior")

@@ -1,5 +1,5 @@
 import math
-
+from Choice_class import *
 class Character:
     def __init__(self,
                   name,
@@ -28,6 +28,20 @@ class Character:
     def normalize_hp(self, enemy):
         if enemy.current_hp < 0:
             enemy.current_hp = 0
+    # @property
+    # def current_hp(self):
+    #     return self._current_hp
+
+    # @current_hp.setter
+    # def current_hp(self, value):
+    #     if value < 0:
+    #         self._current_hp = 0
+    #         return 0
+    #     elif value > self.max_hp:
+    #         self._current_hp = self.max_hp
+    #     else:
+    #         self._current_hp = value
+        
 
 class Hero(Character):
     def __init__(self, 
@@ -94,7 +108,7 @@ class Hero(Character):
 
     def zero_hp(self, enemy):
         if enemy.current_hp == 0:
-            print("You win!\n")
+            print("You win!!!\n")
             self.gets_hp(enemy)
             return True
         elif self.current_hp == 0:
@@ -102,24 +116,93 @@ class Hero(Character):
             return False
 
     def update_stats(self):
-        self.max_hp = 50 + self.physique * 3
-        self.current_hp = self.max_hp
         if self.class_character == "Warrior":
+            self.max_hp = 50 + self.physique * 3
             self.attack = math.ceil((math.ceil(self.strength * 1.5) + math.ceil(self.dexterity * 0.6)) * 0.8)
             self.dodge = math.ceil(self.dexterity * 0.5)
             self.crit_chance = math.ceil(self.cunning // 2)
 
         elif self.class_character == "Mage":
+            self.max_hp = 50 + self.physique * 3
             self.attack = math.ceil(self.magic * 1.5)
             self.dodge = math.ceil(self.dexterity * 0.4)
             self.crit_chance = 0
             
         elif self.class_character == "Assasin":
+            self.max_hp = 50 + self.physique * 3
             self.attack = math.ceil((math.ceil(self.strength * 0.8) + math.ceil(self.dexterity * 1.5)) * 0.7)
             self.dodge = math.ceil(self.dexterity * 0.7)
             self.crit_chance = math.ceil(self.cunning // 2) + 12
 
         elif self.class_character == "Tank":
+            self.max_hp = (50 + self.physique * 3)
             self.attack = math.ceil(self.max_hp * 0.08 + self.strength * 0.8)
             self.dodge = math.ceil(self.dexterity * 0.5)
             self.crit_chance = math.ceil(self.cunning // 2)
+        self.current_hp = self.max_hp
+
+class Enemy(Character):
+    def __init__(self, 
+            name, 
+            strength,
+            dexterity,
+            magic,
+            will_power,
+            cunning,
+            physique,
+            heal_potion,
+            stunned,
+            crit_damage,
+            bleeding,
+            burn,
+            weapon,
+            location,
+            Species,
+            class_character):
+            self.name = name
+            self.strength = strength
+            self.dexterity = dexterity
+            self.magic = magic
+            self.will_power = will_power
+            self.cunning = cunning
+            self.physique = physique
+            self.class_character = class_character
+            self.Species = Species
+            self.heal_potion = heal_potion
+            self.weapon = weapon
+            self.location = location
+            self.stunned = stunned
+            self.bleeding = bleeding
+            self.burn = burn
+            self.crit_damage = crit_damage
+
+            self.update_enemy()
+
+            super().__init__(
+                name,
+                self.max_hp,
+                self.current_hp,
+                self.attack,
+                self.dodge,
+                self.crit_chance,
+                0,
+                0,
+                0,
+                None
+                    )
+
+    def update_enemy(self):
+        self.attack = math.ceil((self.strength) + (self.dexterity) * 0.7)
+        self.dodge = math.ceil(self.dexterity * 0.5)
+        self.crit_chance = math.ceil(self.cunning // 2)
+        self.max_hp = 50 + self.physique * 3
+        self.current_hp = self.max_hp
+
+
+class Weapon:
+    def __init__(self, name, damage):
+        self.name = name
+        self.damage = damage
+
+class Enemy_Weapon(Weapon):
+    pass

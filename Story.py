@@ -53,12 +53,48 @@ def prologue(main_hero):
     if main_hero.class_character == "Mage":
         print("December 8:53, North Forest")
         time.sleep(2)
-        print("You mage")
+        print("""You was born in capital of the Kingdom - Marol. You found magical talent
+              when you were 4 yrs old. You were sent to the Academy to learn control you're power.
+              You were learning fast and became the best student in the entire Academy. When you turned 21,
+              you and you're teacher was sent to neighboring city to give a lecture in their Academy.That was
+              the day you're destiny moved on...\n""")
+        time.sleep(8)
+        print("Teacher: You need some rest. There's enough training for today\n")
+        time.sleep(5)
+        print("You: Okay, teacher, just give me a second\n")
+        time.sleep(5)
+        print("Teacher: Everytime I give you 1 second turns into several hours\n")
+        time.sleep(5)
+        print("I'm worring about you\n")
+        time.sleep(5)
+        print("You: Don't worry, teacher. I promise, I won't be long\n")
+        time.sleep(5)
+        print("Teacher: Good, because I...\n")
+        time.sleep(5)
+        print("Guard: Alarm!!! Ogres attacking\n")
+        time.sleep(5)
+        print("You saw dozens of Ogrs coming straight in your way\n")
+        time.sleep(5)
+        print("You need to protect your friends!!!\n")
+        time.sleep(3)
 
     if main_hero.class_character == "Assasin":
         print("December 8:53, North Forest")
         time.sleep(2)
-        print("You Assasin")
+        print("""You was born in the slums of the capital of kingdom - Marol. You're family was very poor
+              and had to steal to survive. People around considered you as a trash. You were caught in 21 yrs and was sent
+              prison in neighboring city. You thought your life ends here...""")
+        time.sleep(8)
+        print("Security 1: And then this trash was trying to escape, but we caught pretty quick\n")
+        time.sleep(5)
+        print("Security 2: I hope he will be executed\n")
+        time.sleep(5)
+        print("Security 1: Yeah, me to...\n")
+        time.sleep(5)
+        print("Silver Arrow pierced his throat. Security 2 didn't have time to turned around he was stabbed in he back by Ogr")
+        time.sleep(5)
+        print("You had the chance to escape, but you saw Ogr was planning to attack Woman with baby. You conscience said you to help them...\n")
+        
 
     if main_hero.class_character == "Tank":
         print("December 8:53, North Forest")
