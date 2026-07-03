@@ -140,7 +140,7 @@ class Fight:
             time.sleep(1)
             return
         else: 
-            damage = self.crit(attacker, damage) + attacker.weapon.damage
+            damage = self.crit(attacker, damage)
             if enemy.class_character == "Tank":
                 if enemy.armor_cd > 0:
                     enemy.current_hp -= int(damage * 0.85)

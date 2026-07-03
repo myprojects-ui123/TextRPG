@@ -13,16 +13,9 @@ class Warrior(Hero):
         self.exp_need = 1000
         self.max_stamina = 20 + self.will_power * 3
         self.current_stamina = self.max_stamina
-        self.weapon = fists
         self.inventory = {}
         self.update_stats()
         self.update_stats_w()
-
-    def add_item(self, item, amount=1):
-        if item in self.inventory:
-            self.inventory[item] += amount
-        else:
-            self.inventory = amount
 
     def lvl_up(self):
         if self.exp >= self.exp_need:
@@ -76,51 +69,6 @@ class Warrior(Hero):
         print("You: Of course\n")
         time.sleep(2)
 
-    def prologue(self):
-        print("December 8:53, North Forest")
-        time.sleep(3)
-        print("""
-              You, young Soldier, was born in village in northern part of the city Belmon 21 years ago. 
-              In 18 years, after your parents died, you decided to join in army.
-              You were learn fast and completed you education year.
-              Over the next two years, you proved yourself as a disciplined and dependable soldier. 
-              your actions on and off the battlefield earned you overwhelmingly positive recommendations 
-              from officers of every rank
-
-              Many believed that a promising military career awaited you in the years to come  
-              """)
-        time.sleep(3)
-        print("""
-                Now, while travelling to your new assignment,
-                you find yourself escorting an important convoy through dangerous lands
-              """)
-        time.sleep(3)
-        print("""
-              You: So, you have been in the second company. 
-              How did you end up working as a caravan guard?
-                 
-                 Mercenary: Better pay, less paperwork
-                 
-                 You: That's it?
-
-                 Mercenary: Yeah
-              
-                 Merchant:Ha! Don't listen to him. He's just lazy to tell his true reasons
-                 """)
-        time.sleep(3)
-        print("""
-              Before the mercenary could answer, a guard screamed...
-              
-                Guard: Alarm, to arms!
-              
-                You: What happened?
-                 
-                Guard: Ogrs! We're under attack
-              
-                You leaved you're tent and saw dozens of Ogrs coming straight in your way
-
-                In this time you got ready...
-                """)
 
 class Mage(Hero):
     def __init__(self, name):
@@ -130,7 +78,6 @@ class Mage(Hero):
         self.dimension_cd = 0
         self.crit_damage = 0
         self.exp_need = 1000
-        self.weapon = old_staff
         self.mage_side = None
         self.inventory = {}
         
@@ -178,7 +125,6 @@ class Assasin(Hero):
         self.exp_need = 1000
         self.poison_cd = 0
         self.crit_damage = 2
-        self.weapon = fists
         self.assasin_side = None
         self.inventory = {}
 
@@ -227,7 +173,6 @@ class Tank(Hero):
         self.inventory = {}
         self.max_stamina = 20 + self.will_power * 3
         self.current_stamina = self.max_stamina
-        self.weapon = fists
         self.tank_side = None
         
         self.update_stats()
@@ -262,4 +207,4 @@ class Tank(Hero):
             
 
     def victory_text(self):
-        print(".Ogr couldn't make any scratch on you and ran away\n")
+        print("Ogr couldn't make any scratch on you and ran away\n")

@@ -1,5 +1,6 @@
 import math
 from Choice_class import *
+from Inventory import *
 class Character:
     def __init__(self,
                   name,
@@ -81,6 +82,7 @@ class Hero(Character):
             self.story = story
             self.chapter = chapter
             self.side_quest = side_quest
+            self.weapon = fists
 
             self.update_stats()
 
@@ -118,24 +120,24 @@ class Hero(Character):
     def update_stats(self):
         if self.class_character == "Warrior":
             self.max_hp = 50 + self.physique * 3
-            self.attack = math.ceil((math.ceil(self.strength * 1.5) + math.ceil(self.dexterity * 0.6)) * 0.8)
+            self.attack = math.ceil((math.ceil(self.strength * 1.5) + math.ceil(self.dexterity * 0.6)) * 0.8) + self.weapon.damage
             self.dodge = math.ceil(self.dexterity * 0.5)
             self.crit_chance = math.ceil(self.cunning // 2)
 
         elif self.class_character == "Mage":
             self.max_hp = 50 + self.physique * 3
-            self.attack = math.ceil(self.magic * 1.5)
+            self.attack = math.ceil(self.magic * 1.5) + self.weapon.damage
             self.dodge = math.ceil(self.dexterity * 0.4)
             self.crit_chance = 0
             
         elif self.class_character == "Assasin":
             self.max_hp = 50 + self.physique * 3
-            self.attack = math.ceil((math.ceil(self.strength * 0.8) + math.ceil(self.dexterity * 1.5)) * 0.7)
+            self.attack = math.ceil((math.ceil(self.strength * 0.8) + math.ceil(self.dexterity * 1.5)) * 0.7) + self.weapon.damage
             self.dodge = math.ceil(self.dexterity * 0.7)
             self.crit_chance = math.ceil(self.cunning // 2) + 12
 
         elif self.class_character == "Tank":
-            self.max_hp = (50 + self.physique * 3)
+            self.max_hp = (60 + self.physique * 3) + self.weapon.damage
             self.attack = math.ceil(self.max_hp * 0.08 + self.strength * 0.8)
             self.dodge = math.ceil(self.dexterity * 0.5)
             self.crit_chance = math.ceil(self.cunning // 2)
@@ -197,12 +199,3 @@ class Enemy(Character):
         self.crit_chance = math.ceil(self.cunning // 2)
         self.max_hp = 50 + self.physique * 3
         self.current_hp = self.max_hp
-
-
-class Weapon:
-    def __init__(self, name, damage):
-        self.name = name
-        self.damage = damage
-
-class Enemy_Weapon(Weapon):
-    pass
