@@ -9,8 +9,14 @@ class Enemy_Weapon(Weapon):
     pass
 
 def count_item(main_hero):
+    if not main_hero.inventory:
+        print("No objects in Inventory")
+        return
+    
+    print(f"Gold: {main_hero.gold}")
+
     for item, count in main_hero.inventory.items():
-        print(f"- {item}: {count}")
+        print(f"- {item.name}: {count}")
 
 def add_item(hero, item_name):
     if item_name in hero.inventory:
@@ -24,7 +30,8 @@ def equip_weapon(hero, weapon_name):
             old_weapon = hero.weapon
             hero.weapon = item
             hero.inventory[item] -= 1
-            add_item(hero, old_weapon)
+            if not old_weapon.name == "Fists":
+                add_item(hero, old_weapon)
             print(f"You equiped a {hero.weapon}\n")
             return
         else:

@@ -123,7 +123,7 @@ def location_North_Forest(main_hero):
             main_hero.location = "Bar"
         elif a == 3:
             main_hero.location = "Road"
-            return main_hero.location
+            
         elif a == 4:
             print(main_hero.story)
             print(main_hero.side_quest)
@@ -131,6 +131,7 @@ def location_North_Forest(main_hero):
             count_item(main_hero)
         elif a == 6:
             return False
+        return main_hero.location
             
 
 def location_site(main_hero):

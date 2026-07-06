@@ -83,6 +83,7 @@ class Hero(Character):
             self.chapter = chapter
             self.side_quest = side_quest
             self.weapon = fists
+            self.inventory = {}
 
             self.update_stats()
 

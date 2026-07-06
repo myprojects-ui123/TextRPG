@@ -1,6 +1,7 @@
 from Enemy_list import *
 from Inventory import *
 import time
+from saves import save_game
 
 
 def side_1_0_War(main_hero):
@@ -103,8 +104,10 @@ def side_1_1_War(main_hero):
                     main_hero.tournament_site = "Winner"
                     main_hero.side_quest = None 
                     main_hero.exp += 250
-                    main_hero.weapon = steel_blade
-                    print(f"You get {main_hero.weapon.name} and 250 Exp!\n")
+                    add_item(main_hero, steel_blade)
+                    print(f"You got Steel blade and 250 Exp!\n")
+                    save_game(main_hero)
+                    time.sleep(3)
                     return True
      
 def side_1_1_Mage(main_hero):
