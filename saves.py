@@ -23,6 +23,7 @@ def save(main_hero):
         "Exp Need": main_hero.exp_need,
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
+        "Inventory": main_hero.inventory,
         "Location": main_hero.location,
         "Prologue": main_hero.first_fight,
         "Chapter": main_hero.chapter,
@@ -49,6 +50,7 @@ def save(main_hero):
         "Exp Need": main_hero.exp_need,
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
+        "Inventory": main_hero.inventory,
         "Location": main_hero.location,
         "Prologue": main_hero.first_fight,
         "Chapter": main_hero.chapter,
@@ -76,6 +78,7 @@ def save(main_hero):
         "Exp Need": main_hero.exp_need,
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
+        "Inventory": main_hero.inventory,
         "Location": main_hero.location,
         "Prologue": main_hero.first_fight,
         "Chapter": main_hero.chapter,
@@ -103,6 +106,7 @@ def save(main_hero):
         "Exp Need": main_hero.exp_need,
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
+        "Inventory": main_hero.inventory,
         "Location": main_hero.location,
         "Prologue": main_hero.first_fight,
         "Chapter": main_hero.chapter,
@@ -142,6 +146,7 @@ def load_game():
         main_hero.exp = save_data["Experience"]
         main_hero.gold = save_data["Gold"]
         main_hero.heal_potion = save_data["Heal_potion"]
+        main_hero.inventory = save_data["Inventory"]
         main_hero.location = save_data["Location"]
         main_hero.first_fight = save_data["Prologue"]
         main_hero.chapter = save_data["Chapter"]
@@ -166,6 +171,7 @@ def load_game():
         main_hero.exp = save_data["Experience"]
         main_hero.gold = save_data["Gold"]
         main_hero.heal_potion = save_data["Heal_potion"]
+        main_hero.inventory = save_data["Inventory"]
         main_hero.location = save_data["Location"]
         main_hero.first_fight = save_data["Prologue"]
         main_hero.chapter = save_data["Chapter"]
@@ -190,6 +196,7 @@ def load_game():
         main_hero.exp = save_data["Experience"]
         main_hero.gold = save_data["Gold"]
         main_hero.heal_potion = save_data["Heal_potion"]
+        main_hero.inventory = save_data["Inventory"]
         main_hero.location = save_data["Location"]
         main_hero.first_fight = save_data["Prologue"]
         main_hero.chapter = save_data["Chapter"]
@@ -214,6 +221,7 @@ def load_game():
         main_hero.exp = save_data["Experience"]
         main_hero.gold = save_data["Gold"]
         main_hero.heal_potion = save_data["Heal_potion"]
+        main_hero.inventory = save_data["Inventory"]
         main_hero.location = save_data["Location"]
         main_hero.first_fight = save_data["Prologue"]
         main_hero.chapter = save_data["Chapter"]

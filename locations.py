@@ -22,20 +22,21 @@ def location_road(main_hero):
                 break
             except ValueError:
                 print("Incorrect choice\n")
-        if a == 1:
-            main_hero.location = "city"
-        elif a == 2:
-            main_hero.location = "North Forest"
-        elif a == 3:
-            main_hero.location = "Village"
+        match a:
+            case 1:
+                main_hero.location = "city"
+            case 2:
+                main_hero.location = "North Forest"
+            case 3:
+                main_hero.location = "Village"
 
-        elif a == 4:
-            print(main_hero.story)
-            print(main_hero.side_quest)
-        elif a == 5:
-            count_item(main_hero)
-        elif a == 6:
-            return False
+            case 4:
+                print(main_hero.story)
+                print(main_hero.side_quest)
+            case 5:
+                count_item(main_hero)
+            case 6:
+                return False
                 
         return main_hero.location
 
@@ -74,24 +75,26 @@ def location_city(main_hero):
                 break
             except ValueError:
                 print("Incorrect Choice\n")
-        if a == 1:
-            main_hero.location = "Site"
-        elif a == 2:
-            main_hero.location = "Bar"
-        elif a == 3:
-            main_hero.location = "Fortrest"
-        elif a == 4:
-            if main_hero.chapter == 1.0:
-                print("Access Denied\n")
-            else:
-                main_hero.location = "Road"
-        elif a == 5:
-            print(main_hero.story)
-            print(main_hero.side_quest)
-        elif a == 6:
-            count_item(main_hero)
-        elif a == 7:
-            return False    
+        
+        match a:
+            case 1:
+                main_hero.location = "Site"
+            case 2:
+                main_hero.location = "Bar"
+            case 3:
+                main_hero.location = "Fortrest"
+            case 4:
+                if main_hero.chapter == 1.0:
+                    print("Access Denied\n")
+                else:
+                    main_hero.location = "Road"
+            case 5:
+                print(main_hero.story)
+                print(main_hero.side_quest)
+            case 6:
+                count_item(main_hero)
+            case 7:
+                return False    
         return main_hero.location
             
 
