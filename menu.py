@@ -1,5 +1,6 @@
 from saves import *
 
+import os
 
 class Menu:
     def main_menu(self):
@@ -9,14 +10,17 @@ class Menu:
                     self.start_game = int(input("1.Start Game\n2.Load Game\n3.Change the character(only in main menu)\n0.Exit\n"))
                     if self.start_game == 0:
                         break
-                    if self.start_game == 1:
+                    elif self.start_game == 1:
                         fault = int(input("Do you want to start a new game?\n1.Yes\n2.No\n"))
                         if fault == 1:
                             break
-                    if self.start_game == 2:
-                        return load_game()
-                    
-                    if self.start_game == (3):
+                    elif self.start_game == 2:
+                        if os.path.exists("save_1.json"):
+                            return load_game()
+                        else:
+                            print("\nNo save file found\n")
+
+                    elif self.start_game == (3):
                         print("Developing\n")
 
                     else:

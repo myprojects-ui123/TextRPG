@@ -16,7 +16,7 @@ class Character:
                           ):
         self.name = name
         self.max_hp = max_hp
-        self.current_hp = current_hp
+        self._current_hp = current_hp
         self.attack = attack
         self.dodge = dodge
         self.crit_chance = crit_chance
@@ -26,22 +26,16 @@ class Character:
         self.location = location
     
 
-    def normalize_hp(self, enemy):
-        if enemy.current_hp < 0:
-            enemy.current_hp = 0
-    # @property
-    # def current_hp(self):
-    #     return self._current_hp
+    # def normalize_hp(self, enemy):
+    #     if enemy.current_hp < 0:
+    #         enemy.current_hp = 0
+    @property
+    def current_hp(self):
+        return self._current_hp
 
-    # @current_hp.setter
-    # def current_hp(self, value):
-    #     if value < 0:
-    #         self._current_hp = 0
-    #         return 0
-    #     elif value > self.max_hp:
-    #         self._current_hp = self.max_hp
-    #     else:
-    #         self._current_hp = value
+    @current_hp.setter
+    def current_hp(self, value):
+        self._current_hp = max(0, min(value, self.max_hp))
         
 
 class Hero(Character):

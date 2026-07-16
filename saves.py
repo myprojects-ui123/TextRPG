@@ -1,4 +1,4 @@
-from characters import *
+# from characters import *
 from Choice_class import *
 
 import json

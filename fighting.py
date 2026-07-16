@@ -18,7 +18,6 @@ class Fight:
         damage = self.dodge_enemy(attacker, enemy)
         if damage:
             print(f"{damage}\n")
-        enemy.normalize_hp(enemy)
         time.sleep(1)
         print(f"{enemy.name}: {enemy.current_hp}\n")
 
@@ -38,8 +37,6 @@ class Fight:
 
         attacker.kick_cd = 2
         print(f"{enemy.name}: -{damage}\n")
-
-        attacker.normalize_hp(enemy)
 
     def heal_stamina(self, main_hero):
         main_hero.current_stamina += 5
@@ -78,7 +75,6 @@ class Fight:
         enemy.current_hp -= damage
         enemy.bleeding = 2
         attacker.poison_cd = 3
-        attacker.normalize_hp(enemy)
         print(f"You used a poison. {enemy.name} is bleeding!")
 
     def reduce_poison(self, attacker, enemy):
@@ -129,7 +125,7 @@ class Fight:
         damage = random.randint(int(attacker.attack * 0.5), attacker.attack)
         if attacker.class_character == "Mage":
             if enemy.stunned > 0:
-                enemy.current_hp -= int(damage * 0.6) + attacker.weapon.damage
+                enemy.current_hp -= int(damage * 0.6)
                 return damage
             else:
                 enemy.current_hp -= damage
@@ -152,16 +148,18 @@ class Heal:
 
     def heal_potion(self, hero):
         if hero.heal_potion > 0:
-            self.limitation(hero)
-            hero.heal_potion -= 1
+            if self.limitation(hero):
+                hero.heal_potion -= 1
         else: 
             print("You dont have Heal potions\n")
 
     def limitation(self, hero):
         if hero.current_hp < hero.max_hp:
             self.healer(hero)
+            return True
         else:
             print("Your Current HP is too high\n")
+            return False
 
     def healer(self, hero):
         amount = 20 + math.ceil(hero.magic * 0.15)
