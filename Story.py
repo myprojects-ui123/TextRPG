@@ -47,6 +47,7 @@ def prologue(main_hero):
                 You leaved you're tent and saw dozens of Ogrs coming straight in your way
 
                 In this time you got ready...\n""")
+        time.sleep(3)
 
 
     if main_hero.class_character == "Mage":

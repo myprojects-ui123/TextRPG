@@ -18,17 +18,17 @@ def side_1_0_War(main_hero):
             time.sleep(2)
             slow_print("Nathan: Of course I am. I'm not as weak as you, ha ha!\n")
             time.sleep(2)
-            slow_print("You: Glad to see you. What are you doing here?")
+            slow_print("You: Glad to see you. What are you doing here?\n")
             time.sleep(2)
             slow_print("Nathan: The Championship of the Kingdom starting soon in this city.\nAs the one of the strongest soldiers, I must be here")
             time.sleep(2)
-            slow_print("You: Wait, in this city?!\nToday?!")
+            slow_print("You: Wait, in this city?!\nToday?!\n")
             time.sleep(2)
             try:
                 slow_print("Nathan: Yeah, if you wanna participate, I can put in a good word for you, so what do you think?\n1.Yeah\n2.No, thanks, mate\n")
                 a = int(input())
                 if a == 1:
-                    slow_print("You: Yeah, sure")
+                    slow_print("You: Yeah, sure\n")
                     time.sleep(2)
                     slow_print("Nathan: Good, go to the site later, see ya\n")
                     time.sleep(2)
@@ -71,7 +71,7 @@ def side_1_1_War(main_hero):
                         main_hero.update_stats()
                         return
                     main_hero.update_stats()
-                    slow_print(f"Judge: And the Winner is {main_hero.name}\n")
+                    slow_print(f"\nJudge: And the Winner is {main_hero.name}\n")
                     time.sleep(2)
                     slow_print(f"Judge: Next fight: {main_hero.name} against The last year Champion\n")
                     time.sleep(2)
@@ -90,7 +90,7 @@ def side_1_1_War(main_hero):
                         main_hero.exp += 125
                         return
                     main_hero.update_stats()
-                    slow_print(f"Judge: And Final: {main_hero.name} against Nathan\n")
+                    slow_print(f"\nJudge: And Final: {main_hero.name} against Nathan\n")
                     time.sleep(3)
                     slow_print("Nathan: Didn't expect it will be me in the Final?\nLet's finally found out, who is stronger\n")
                     time.sleep(3)
@@ -114,7 +114,7 @@ def side_1_1_War(main_hero):
                     main_hero.tournament_site = "Winner"
                     main_hero.side_quest = None 
                     main_hero.exp += 250
-                    add_item(main_hero, steel_blade)
+                    add_item(main_hero, Weapons[steel_blade.id])
                     slow_print(f"You got Steel blade and 250 Exp!\n")
                     save_game(main_hero)
                     time.sleep(3)

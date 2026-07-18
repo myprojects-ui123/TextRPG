@@ -1,9 +1,16 @@
 # from characters import *
 from Choice_class import *
+from Inventory import Weapons
 
 import json
         
 def save(main_hero):
+
+    inventory_save = {}
+
+    for item, count in main_hero.inventory.items():
+        inventory_save[item] = count
+
     if main_hero.class_character == "Mage":
         return {
         "name": main_hero.name,
@@ -23,7 +30,7 @@ def save(main_hero):
         "Exp Need": main_hero.exp_need,
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
-        "Inventory": main_hero.inventory,
+        "Inventory": inventory_save,
         "Location": main_hero.location,
         "Prologue": main_hero.first_fight,
         "Chapter": main_hero.chapter,
@@ -32,6 +39,12 @@ def save(main_hero):
         "Mage_side_quest": main_hero.mage_side
 }
     elif main_hero.class_character == "Warrior":
+
+        inventory_save = {}
+
+        for item, count in main_hero.inventory.items():
+            inventory_save[item] = count
+
         return {
         "name": main_hero.name,
         "Strength": main_hero.strength, 
@@ -60,6 +73,12 @@ def save(main_hero):
         }
     
     elif main_hero.class_character == "Assasin":
+
+        inventory_save = {}
+
+        for item, count in main_hero.inventory.items():
+            inventory_save[item] = count
+
         return {
         "name": main_hero.name,
         "Strength": main_hero.strength, 
@@ -88,6 +107,11 @@ def save(main_hero):
         }
     
     elif main_hero.class_character == "Tank":
+
+        inventory_save = {}
+
+        for item, count in main_hero.inventory.items():
+            inventory_save[item] = count
         return {
         "name": main_hero.name,
         "Strength": main_hero.strength, 
@@ -118,6 +142,9 @@ def save(main_hero):
 def save_game(main_hero):
     with open("save_1.json", "w") as file:
         json.dump(save(main_hero), file, indent=4)
+
+
+
 def load_game():
     with open("save_1.json", "r") as file:
         save_data = json.load(file)
@@ -131,6 +158,11 @@ def load_game():
         main_hero = Tank(save_data["name"])
 
     if main_hero.class_character == "Mage":
+
+        for item_id, count in save_data["Inventory"].items():
+            weapon = Weapons[item_id]
+            main_hero.inventory[weapon] = count
+
         main_hero.strength = save_data["Strength"]
         main_hero.dexterity = save_data["Dexterity"]
         main_hero.magic = save_data["Magic"]
@@ -156,6 +188,12 @@ def load_game():
         return main_hero
 
     elif main_hero.class_character == "Warrior":
+
+
+        for item_id, count in save_data["Inventory"].items():
+            weapon = Weapons[item_id]
+            main_hero.inventory[weapon] = count
+
         main_hero.strength = save_data["Strength"]
         main_hero.dexterity = save_data["Dexterity"]
         main_hero.magic = save_data["Magic"]
@@ -181,6 +219,11 @@ def load_game():
         return main_hero
     
     elif main_hero.class_character == "Assasin":
+
+        for item_id, count in save_data["Inventory"].items():
+            weapon = Weapons[item_id]
+            main_hero.inventory[weapon] = count
+
         main_hero.strength = save_data["Strength"]
         main_hero.dexterity = save_data["Dexterity"]
         main_hero.magic = save_data["Magic"]
@@ -206,6 +249,11 @@ def load_game():
         return main_hero
     
     elif main_hero.class_character == "Tank":
+
+        for item_id, count in save_data["Inventory"].items():
+            weapon = Weapons[item_id]
+            main_hero.inventory[weapon] = count
+
         main_hero.strength = save_data["Strength"]
         main_hero.dexterity = save_data["Dexterity"]
         main_hero.magic = save_data["Magic"]

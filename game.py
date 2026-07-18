@@ -7,8 +7,6 @@ from saves import save_game
 from Plot import *
 from menu import Menu
 
-import os
-
 main_hero = None
 original_name = None
 
