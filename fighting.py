@@ -4,6 +4,13 @@ import time
 import math
 
 class Fight:
+    def cicle(self):
+       while True:
+            try:
+               self.start = int(input("1.Attack\n2.Heal\n3.Spells\n0.Main Menu\n"))
+               break
+            except ValueError:
+                print("Try again:\n")
 
     def crit(self, attacker, damage):
         if random.randint(1, 100) <= attacker.crit_chance:
@@ -165,6 +172,4 @@ class Heal:
         amount = 20 + math.ceil(hero.magic * 0.15)
         hero.current_hp += amount
         print(f"You got heal +{amount}\n")
-        if hero.current_hp > hero.max_hp:
-            hero.current_hp = hero.max_hp
         print(f"Now your Current HP is: {hero.current_hp}")

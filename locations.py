@@ -6,7 +6,7 @@ from Spells import spells
 from Enemy_list import *
 from Choice_class import *
 from Side_Quests import *
-from Inventory import count_item
+from Inventory import count_item, equip_weapon
 
 fight = Fight()
 game = Game()
@@ -37,6 +37,8 @@ def location_road(main_hero):
                 count_item(main_hero)
             case 6:
                 return False
+            case _:
+                print("Incorrect\n")
                 
         return main_hero.location
 
@@ -49,21 +51,24 @@ def location_village(main_hero):
                 break
             except ValueError:
                 print("Incorrect choice\n")
-        if a == 1:
-            main_hero.location = "Home"
-        elif a == 2:
-            main_hero.location = "Market"
-        elif a == 3:
-            main_hero.locatiion = "Road"
+        match a:
+            case 1:
+                main_hero.location = "Home"
+            case 2:
+                main_hero.location = "Market"
+            case 3:
+                main_hero.locatiion = "Road"
             
-        elif a == 4:
-            print(main_hero.story)
-            print(main_hero.side_quest)
-        elif a == 5:
-            count_item(main_hero)
-        elif a == 6:
-            return False
-        
+            case 4:
+                print(main_hero.story)
+                print(main_hero.side_quest)
+            case 5:
+                count_item(main_hero)
+            case 6:
+                return False
+            case _:
+                print("Incorrect\n")
+
         return main_hero.location
     
 def location_city(main_hero):
@@ -112,28 +117,32 @@ def location_North_Forest(main_hero):
                 break
             except ValueError:
                 print("Incorrect choice\n")
-        if a == 1:
-            hunt = random.randint(1, 100)
-            if hunt <= 30:
-                print("You attacked Ogr!\n")
-                enemy = Ogr
-                if not location__current_fight(main_hero, enemy):
-                    return "dead"
-            elif hunt >= 31 and hunt <= 35:
-                print("You found gold!\n")
+        
+        match a:
+            case 1:
+                hunt = random.randint(1, 100)
+                if hunt <= 30:
+                    print("You attacked Ogr!\n")
+                    enemy = Ogr
+                    if not location__current_fight(main_hero, enemy):
+                        return "dead"
+                elif hunt >= 31 and hunt <= 35:
+                    print("You found gold!\n")
                 main_hero.gold += 5
-        elif a == 2:
-            main_hero.location = "Bar"
-        elif a == 3:
-            main_hero.location = "Road"
+            case 2:
+                main_hero.location = "Bar"
+            case 3:
+                main_hero.location = "Road"
             
-        elif a == 4:
-            print(main_hero.story)
-            print(main_hero.side_quest)
-        elif a == 5:
-            count_item(main_hero)
-        elif a == 6:
-            return False
+            case 4:
+                print(main_hero.story)
+                print(main_hero.side_quest)
+            case 5:
+                count_item(main_hero)
+            case 6:
+                return False
+            case _:
+                print("Incorrect\n")
         return main_hero.location
             
 
@@ -146,16 +155,19 @@ def location_site(main_hero):
                     a = int(input("1.City\n2.Goal\n3.Equipment\n4.Main_menu\n"))
                     break
                 except ValueError:
-                    print("Try again")
-            if a == 1:
-                main_hero.location = "city"
-            elif a == 2:
-                print(main_hero.story)
-                print(main_hero.side_quest)
-            elif a == 3:
-                count_item(main_hero)
-            elif a == 4:
-                return False
+                    print("Try again\n")
+            match a:
+                case 1:
+                    main_hero.location = "city"
+                case 2:
+                    print(main_hero.story)
+                    print(main_hero.side_quest)
+                case 3:
+                    count_item(main_hero)
+                case 4:
+                    return False
+                case _:
+                    print("Incorrect\n")
             return main_hero.location
                 
 
@@ -167,21 +179,23 @@ def location_bar(main_hero):
         side_1_0_War(main_hero)
         if main_hero.chapter == 1.0:
             while True:
-                while True:
-                    try:
-                        a = int(input("1.City\n2.Goal\n3.Main_menu\n"))
-                        break
-                    except ValueError:
-                        print("Incorrect Choice\n")
-                if a == 1:
+                try:
+                    a = int(input("1.City\n2.Goal\n3.Main_menu\n"))
+                    break
+                except ValueError:
+                    print("Incorrect Choice\n")
+            match a:
+                case 1:
                     main_hero.location = "city"
-                elif a == 2:
+                case 2:
                     print(main_hero.story)
                     print(main_hero.side_quest)
-                elif a == 3:
+                case 3:
                     return False
+                case _:
+                    print("Incorrect\n")
                 
-                return main_hero.location
+            return main_hero.location
         else:
             try:
                 a = int(input("1.Drink\n2.Food\n3.City\n4.Goal\n5.Main_menu\n"))
@@ -271,7 +285,7 @@ def location__current_fight(main_hero, enemy):
             save_game(main_hero)
             input("Press Enter to continue:")
             break
-        game.cicle()
+        fight.cicle()
         if game.start == 1:
             fight.damage_enemy(main_hero, enemy)
             if main_hero.zero_hp(enemy) == True:
