@@ -19,7 +19,7 @@ def count_item(main_hero):
 
     for item, count in main_hero.inventory.items():
         weapon = Weapons[item]
-        print(f"- {weapon.name}: {count}")
+        print(f"- {weapon.name}: {count}\n")
 
     
 
