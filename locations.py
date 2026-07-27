@@ -1,5 +1,4 @@
 from fighting import *
-from Story import Game
 from saves import *
 from menu import Menu
 from Spells import spells
@@ -9,7 +8,6 @@ from Side_Quests import *
 from Inventory import count_item, equip_weapon
 
 fight = Fight()
-game = Game()
 heal = Heal()
 menu = Menu()
 
@@ -243,12 +241,11 @@ def location_s(main_hero):
             
 def location__first_fight(main_hero, small_ogr):
     fight = Fight()
-    game = Game()
     heal = Heal()
 
     while True:
-        game.cicle()
-        if game.start == 1:        
+        fight.cicle()
+        if fight.start == 1:        
             fight.damage_enemy(main_hero, small_ogr)
             if main_hero.zero_hp(small_ogr) == True:
                 main_hero.lvl_up()
@@ -265,11 +262,11 @@ def location__first_fight(main_hero, small_ogr):
                 break
             print(f"{main_hero.name}\nHP:{main_hero.current_hp}\n")
             print(f"{small_ogr.name}\nHP:{small_ogr.current_hp}\n")
-        elif game.start == 2:
+        elif fight.start == 2:
             heal.heal_potion(main_hero)
-        elif game.start == 3:
+        elif fight.start == 3:
             print("Access denied\n")
-        elif game.start == 0:
+        elif fight.start == 0:
             return False
         
 
@@ -277,7 +274,6 @@ def location__first_fight(main_hero, small_ogr):
 
 def location__current_fight(main_hero, enemy):
     fight = Fight()
-    game = Game()
     heal = Heal()
     while True:
         if main_hero.zero_hp(enemy) == True:
@@ -286,7 +282,7 @@ def location__current_fight(main_hero, enemy):
             input("Press Enter to continue:")
             break
         fight.cicle()
-        if game.start == 1:
+        if fight.start == 1:
             fight.damage_enemy(main_hero, enemy)
             if main_hero.zero_hp(enemy) == True:
                 main_hero.lvl_up()
@@ -309,14 +305,14 @@ def location__current_fight(main_hero, enemy):
             if main_hero.class_character == "Tank":
                 fight.reduce_armor(main_hero)
                 fight.heal_stamina(main_hero)
-        elif game.start == 2:
+        elif fight.start == 2:
 
                 heal.heal_potion(main_hero)
 
-        elif game.start == 3:
+        elif fight.start == 3:
             spells(main_hero, enemy)
 
-        elif game.start == 0:
+        elif fight.start == 0:
             break
 
         print(f"{main_hero.name}\nHP:{main_hero.current_hp}\n")

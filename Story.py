@@ -115,13 +115,3 @@ def start_story(main_hero):
                     print("Wrong\n")
             except ValueError:
                 print("Try Again\n")    
-
-class Game:
-    
-    def cicle(self):
-       while True:
-            try:
-               self.start = int(input("1.Attack\n2.Heal\n3.Spells\n0.Main Menu\n"))
-               break
-            except ValueError:
-                print("Try again:\n")

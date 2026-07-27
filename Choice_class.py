@@ -1,7 +1,7 @@
 import time
 from characters import Hero
 from Inventory import *
-
+from Side_Quests import slow_print
 
 class Warrior(Hero):
     def __init__(self, name):
@@ -47,25 +47,25 @@ class Warrior(Hero):
 
     
     def victory_text(self):
-        print("You calmly cut off the ogr's head.\n")
+        slow_print("You calmly cut off the ogr's head.\n")
         time.sleep(3)
-        print("You were under attack 1 hour.")
+        slow_print("You were under attack 1 hour.\n")
         time.sleep(1)
-        print("""Killed many ogres and saved many merchants from death, 
-              you proved yourself again as a good and talent soldier""")
+        slow_print("""Killed many ogres and saved many merchants from death, 
+              you proved yourself again as a good and talent soldier\n""")
         time.sleep(3)
-        print("""You Reached City with on problems after this one.
+        slow_print("""You Reached City with on problems after this one.
               Then Captain Mave, one of the strongest soldier in the entire Kingdom came up to you:\n""")
         time.sleep(3)
-        print("""Captain Mave: You fought very well, soldier.
+        slow_print("""Captain Mave: You fought very well, soldier.
                For a long time I didn't see such an ordinary and young soldier
-               that can fight so discipline and good, What your Name?""")
+               that can fight so discipline and good, What your Name?\n""")
         time.sleep(5)
-        print(f"My name is {self.name}\n")
+        slow_print(f"My name is {self.name}\n")
         time.sleep(3)
-        print("Captain Mave: Very well. When you ready meet me in the Fortress\n")
+        slow_print("Captain Mave: Very well. When you ready meet me in the Fortress\n")
         time.sleep(3)
-        print("You: Of course\n")
+        slow_print("You: Of course\n")
         time.sleep(2)
 
 
@@ -111,7 +111,7 @@ class Mage(Hero):
                 self.update_stats_m()
 
     def victory_text(self):
-        print("You banished the ogr to another dimension.\n")
+        slow_print("You banished the ogr to another dimension.\n")
     
     
 
@@ -160,7 +160,7 @@ class Assasin(Hero):
         
 
     def victory_text(self):
-        print("The Ogr died from numerous wounds bcz of knife you took from him.\n")
+        slow_print("The Ogr died from numerous wounds bcz of knife you took from him.\n")
 
 class Tank(Hero):
 
@@ -205,4 +205,4 @@ class Tank(Hero):
             
 
     def victory_text(self):
-        print("Ogr couldn't make any scratch on you and ran away\n")
+        slow_print("Ogr couldn't make any scratch on you and ran away\n")

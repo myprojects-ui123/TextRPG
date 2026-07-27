@@ -1,6 +1,8 @@
 import math
 from Choice_class import *
 from Inventory import *
+
+
 class Character:
     def __init__(self,
                   name,
@@ -77,6 +79,7 @@ class Hero(Character):
             self.chapter = chapter
             self.side_quest = side_quest
             self.weapon = fists
+            self.armor = Clothes
             self.inventory = {}
 
             self.update_stats()

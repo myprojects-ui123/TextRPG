@@ -9,11 +9,6 @@ from menu import Menu
 
 main_hero = None
 original_name = None
-
-
-game = Game()
-fight = Fight()
-heal = Heal()
 menu = Menu()
 while True:
     menu.main_menu()

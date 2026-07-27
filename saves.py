@@ -1,5 +1,4 @@
 # from characters import *
-from Choice_class import *
 from Inventory import Weapons
 
 import json
@@ -31,6 +30,8 @@ def save(main_hero):
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
         "Inventory": inventory_save,
+        "Weapon": main_hero.weapon.id,
+        "Armor": main_hero.armor.id,
         "Location": main_hero.location,
         "Prologue": main_hero.first_fight,
         "Chapter": main_hero.chapter,
@@ -64,6 +65,8 @@ def save(main_hero):
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
         "Inventory": main_hero.inventory,
+        "Weapon": main_hero.weapon.id,
+        "Armor": main_hero.armor.id,
         "Location": main_hero.location,
         "Prologue": main_hero.first_fight,
         "Chapter": main_hero.chapter,
@@ -98,6 +101,8 @@ def save(main_hero):
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
         "Inventory": main_hero.inventory,
+        "Weapon": main_hero.weapon.id,
+        "Armor": main_hero.armor.id,
         "Location": main_hero.location,
         "Prologue": main_hero.first_fight,
         "Chapter": main_hero.chapter,
@@ -131,6 +136,8 @@ def save(main_hero):
         "Gold": main_hero.gold,
         "Heal_potion": main_hero.heal_potion,
         "Inventory": main_hero.inventory,
+        "Weapon": main_hero.weapon.id,
+        "Armor": main_hero.armor.id,
         "Location": main_hero.location,
         "Prologue": main_hero.first_fight,
         "Chapter": main_hero.chapter,
@@ -146,6 +153,7 @@ def save_game(main_hero):
 
 
 def load_game():
+    from Choice_class import Warrior, Mage, Assasin, Tank
     with open("save_1.json", "r") as file:
         save_data = json.load(file)
     if save_data["class"] == "Warrior":
@@ -161,6 +169,7 @@ def load_game():
 
         for item_id, count in save_data["Inventory"].items():
             weapon = Weapons[item_id]
+            # armor = Armors[]
             main_hero.inventory[weapon] = count
 
         main_hero.strength = save_data["Strength"]
@@ -170,7 +179,7 @@ def load_game():
         main_hero.cunning = save_data["Cunning"]
         main_hero.physique = save_data["Physique"]
         main_hero.lvl = save_data["Lvl"] 
-        main_hero.Species = ["Species"] 
+        main_hero.Species = save_data["Species"] 
         main_hero.class_character = save_data["class"] 
         main_hero.current_hp = save_data["Current_hp"] 
         main_hero.max_hp = save_data["Max_hp"]
@@ -179,6 +188,8 @@ def load_game():
         main_hero.gold = save_data["Gold"]
         main_hero.heal_potion = save_data["Heal_potion"]
         main_hero.inventory = save_data["Inventory"]
+        main_hero.weapon.id = save_data["Weapon"]
+        main_hero.armor.id = save_data["Armor"]
         main_hero.location = save_data["Location"]
         main_hero.first_fight = save_data["Prologue"]
         main_hero.chapter = save_data["Chapter"]
@@ -201,7 +212,7 @@ def load_game():
         main_hero.cunning = save_data["Cunning"]
         main_hero.physique = save_data["Physique"]
         main_hero.lvl = save_data["Lvl"] 
-        main_hero.Species = ["Species"] 
+        main_hero.Species = save_data["Species"] 
         main_hero.class_character = save_data["class"] 
         main_hero.current_hp = save_data["Current_hp"] 
         main_hero.max_hp = save_data["Max_hp"]
@@ -210,6 +221,8 @@ def load_game():
         main_hero.gold = save_data["Gold"]
         main_hero.heal_potion = save_data["Heal_potion"]
         main_hero.inventory = save_data["Inventory"]
+        main_hero.weapon.id = save_data["Weapon"]
+        main_hero.armor.id = save_data["Armor"]
         main_hero.location = save_data["Location"]
         main_hero.first_fight = save_data["Prologue"]
         main_hero.chapter = save_data["Chapter"]
@@ -231,7 +244,7 @@ def load_game():
         main_hero.cunning = save_data["Cunning"]
         main_hero.physique = save_data["Physique"]
         main_hero.lvl = save_data["Lvl"] 
-        main_hero.Species = ["Species"] 
+        main_hero.Species = save_data["Species"] 
         main_hero.class_character = save_data["class"] 
         main_hero.current_hp = save_data["Current_hp"] 
         main_hero.max_hp = save_data["Max_hp"]
@@ -240,6 +253,8 @@ def load_game():
         main_hero.gold = save_data["Gold"]
         main_hero.heal_potion = save_data["Heal_potion"]
         main_hero.inventory = save_data["Inventory"]
+        main_hero.weapon.id = save_data["Weapon"]
+        main_hero.armor.id = save_data["Armor"]
         main_hero.location = save_data["Location"]
         main_hero.first_fight = save_data["Prologue"]
         main_hero.chapter = save_data["Chapter"]
@@ -261,7 +276,7 @@ def load_game():
         main_hero.cunning = save_data["Cunning"]
         main_hero.physique = save_data["Physique"]
         main_hero.lvl = save_data["Lvl"] 
-        main_hero.Species = ["Species"] 
+        main_hero.Species = save_data["Species"] 
         main_hero.class_character = save_data["class"] 
         main_hero.current_hp = save_data["Current_hp"] 
         main_hero.max_hp = save_data["Max_hp"]
@@ -270,6 +285,8 @@ def load_game():
         main_hero.gold = save_data["Gold"]
         main_hero.heal_potion = save_data["Heal_potion"]
         main_hero.inventory = save_data["Inventory"]
+        main_hero.weapon.id = save_data["Weapon"]
+        main_hero.armor.id = save_data["Armor"]
         main_hero.location = save_data["Location"]
         main_hero.first_fight = save_data["Prologue"]
         main_hero.chapter = save_data["Chapter"]

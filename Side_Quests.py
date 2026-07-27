@@ -1,10 +1,10 @@
 from Enemy_list import *
 from Inventory import *
 from saves import save_game
-
+from Side_quests_text import *
 
 import time
-def slow_print(text, speed=0.03):
+def slow_print(text, speed=0.04):
     for letter in text:
         print(letter, end="", flush=True)
         time.sleep(speed)
@@ -12,34 +12,45 @@ def slow_print(text, speed=0.03):
 
 def side_1_0_War(main_hero):
      if main_hero.chapter == 1.0 and main_hero.class_character == "Warrior" and main_hero.side_quest == None and main_hero.tournament_site == None:
-            slow_print("Stranger: Well, well , well, look, who is here...\n")
-            time.sleep(2)
-            slow_print("You turned around and saw your friend, Nathan\nYou:Nathan, are you still alive?:)\n")
-            time.sleep(2)
-            slow_print("Nathan: Of course I am. I'm not as weak as you, ha ha!\n")
-            time.sleep(2)
-            slow_print("You: Glad to see you. What are you doing here?\n")
-            time.sleep(2)
-            slow_print("Nathan: The Championship of the Kingdom starting soon in this city.\nAs the one of the strongest soldiers, I must be here")
-            time.sleep(2)
-            slow_print("You: Wait, in this city?!\nToday?!\n")
-            time.sleep(2)
-            try:
-                slow_print("Nathan: Yeah, if you wanna participate, I can put in a good word for you, so what do you think?\n1.Yeah\n2.No, thanks, mate\n")
-                a = int(input())
-                if a == 1:
-                    slow_print("You: Yeah, sure\n")
-                    time.sleep(2)
-                    slow_print("Nathan: Good, go to the site later, see ya\n")
-                    time.sleep(2)
-                    main_hero.side_quest = "Meet Nathan on the Site"
-                if a == 2:
-                    slow_print("You: No, thanks\n")
-                    time.sleep(2)
-                    slow_print("Nathat: Okay, but if you change your mind, meet me in the Site\n")
-                    main_hero.side_quest = "Meet Nathan on the Site"
-            except ValueError:
-                print("Try again\n")
+            # slow_print("Stranger: Well, well , well, look, who is here...\n")
+            # time.sleep(2)
+            # slow_print("You turned around and saw your friend, Nathan\nYou:Nathan, are you still alive?:)\n")
+            # time.sleep(2)
+            # slow_print("Nathan: Of course I am. I'm not as weak as you, ha ha!\n")
+            # time.sleep(2)
+            # slow_print("You: Glad to see you. What are you doing here?\n")
+            # time.sleep(2)
+            # slow_print("Nathan: The Championship of the Kingdom starting soon in this city.\nAs the one of the strongest soldiers, I must be here")
+            # time.sleep(2)
+            # slow_print("You: Wait, in this city?!\nToday?!\n")
+            # time.sleep(2)
+            # for text in side_1_01():
+            #     slow_print(text)
+            #     input("")
+            out_text(side_1_01())
+            while True:
+                try:
+                    # slow_print("Nathan: Yeah, if you wanna participate, I can put in a good word for you, so what do you think?\n1.Yeah\n2.No, thanks, mate\n")
+                    a = int(input())
+                    if a == 1:
+                        out_text(side_1_01_choice_1())
+                        # slow_print("You: Yeah, sure\n")
+                        # time.sleep(2)
+                        # slow_print("Nathan: Good, go to the site later, see ya\n")
+                        # time.sleep(2)
+                        main_hero.side_quest = "Meet Nathan on the Site"
+                        break
+                    elif a == 2:
+                        out_text(side_1_01_choice_2())
+                        # slow_print("You: No, thanks\n")
+                        # time.sleep(2)
+                        # slow_print("Nathat: Okay, but if you change your mind, meet me in the Site\n")
+                        main_hero.side_quest = "Meet Nathan on the Site"
+                        break
+                    else:
+                         print("Choose 1 or 2\n")
+                except ValueError:
+                    print("Try again\n")
 
 def side_1_1_War(main_hero):
      from locations import location__current_fight
