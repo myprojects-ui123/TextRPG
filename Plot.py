@@ -3,9 +3,8 @@ from locations import location_s
 def chapter_1_0(main_hero):
     if main_hero.chapter == 1.0:
         main_hero.story = "Find the Captian"
-        if not location_s(main_hero):
-            return False
-        main_hero.story = "Completed"
+        if location_s(main_hero) == "Prologue: Chapter 1 completed":
+            main_hero.story = "Completed"
         if main_hero.story == "Completed":
             main_hero.chapter = 1.1
 

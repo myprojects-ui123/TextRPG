@@ -12,39 +12,19 @@ def slow_print(text, speed=0.04):
 
 def side_1_0_War(main_hero):
      if main_hero.chapter == 1.0 and main_hero.class_character == "Warrior" and main_hero.side_quest == None and main_hero.tournament_site == None:
-            # slow_print("Stranger: Well, well , well, look, who is here...\n")
-            # time.sleep(2)
-            # slow_print("You turned around and saw your friend, Nathan\nYou:Nathan, are you still alive?:)\n")
-            # time.sleep(2)
-            # slow_print("Nathan: Of course I am. I'm not as weak as you, ha ha!\n")
-            # time.sleep(2)
-            # slow_print("You: Glad to see you. What are you doing here?\n")
-            # time.sleep(2)
-            # slow_print("Nathan: The Championship of the Kingdom starting soon in this city.\nAs the one of the strongest soldiers, I must be here")
-            # time.sleep(2)
-            # slow_print("You: Wait, in this city?!\nToday?!\n")
-            # time.sleep(2)
-            # for text in side_1_01():
-            #     slow_print(text)
-            #     input("")
             out_text(side_1_01())
+            slow_print("1. Yeah\n")
+            slow_print("2. No, thanks, mate\n")
             while True:
                 try:
-                    # slow_print("Nathan: Yeah, if you wanna participate, I can put in a good word for you, so what do you think?\n1.Yeah\n2.No, thanks, mate\n")
+                   
                     a = int(input())
                     if a == 1:
                         out_text(side_1_01_choice_1())
-                        # slow_print("You: Yeah, sure\n")
-                        # time.sleep(2)
-                        # slow_print("Nathan: Good, go to the site later, see ya\n")
-                        # time.sleep(2)
                         main_hero.side_quest = "Meet Nathan on the Site"
                         break
                     elif a == 2:
-                        out_text(side_1_01_choice_2())
-                        # slow_print("You: No, thanks\n")
-                        # time.sleep(2)
-                        # slow_print("Nathat: Okay, but if you change your mind, meet me in the Site\n")
+                        out_text(side_1_01_choice_2()) 
                         main_hero.side_quest = "Meet Nathan on the Site"
                         break
                     else:
@@ -56,21 +36,22 @@ def side_1_1_War(main_hero):
      from locations import location__current_fight
      if main_hero.class_character == "Warrior":
         if main_hero.side_quest == "Meet Nathan on the Site" and main_hero.tournament_site == None:
-                    slow_print("You arrived to the Site and saw many soldiers around area. Then you saw Nathan and came straight to him\n")
-                    time.sleep(2)
-                    slow_print("Nathan: Oh, you here, I knew you would come\n")
-                    time.sleep(2)
-                    slow_print("You: Of Course I would come\n")
-                    time.sleep(2)
-                    slow_print("Nathan:There are 3 stages. Quarter-Final. Semi-Final. Final.\nYou need to win 3 opponents to win Tournament\n")
-                    time.sleep(2)
-                    slow_print("You:Okay, got it\n")
-                    time.sleep(2)
-                    slow_print("Nathan: Added you to the list of participants, show them, how to fight")
-                    time.sleep(2)
-                    slow_print("You: I will\n")
-                    time.sleep(2)
-                    slow_print(f"Judge: First fight of Quarter Finals: {main_hero.name} against Blacksmith\n")
+                    # slow_print("You arrived to the Site and saw many soldiers around area. Then you saw Nathan and came straight to him\n")
+                    # time.sleep(2)
+                    # slow_print("Nathan: Oh, you here, I knew you would come\n")
+                    # time.sleep(2)
+                    # slow_print("You: Of Course I would come\n")
+                    # time.sleep(2)
+                    # slow_print("Nathan:There are 3 stages. Quarter-Final. Semi-Final. Final.\nYou need to win 3 opponents to win Tournament\n")
+                    # time.sleep(2)
+                    # slow_print("You:Okay, got it\n")
+                    # time.sleep(2)
+                    # slow_print("Nathan: Added you to the list of participants, show them, how to fight")
+                    # time.sleep(2)
+                    # slow_print("You: I will\n")
+                    # time.sleep(2)
+                    # slow_print(f"Judge: First fight of Quarter Finals: {main_hero.name} against Blacksmith\n")
+                    out_text(side_1_01_version_2())
                     slow_print("Press Enter to start fight: ")
                     input()
                     enemy = Soldier_chapter_0
@@ -82,10 +63,11 @@ def side_1_1_War(main_hero):
                         main_hero.update_stats()
                         return
                     main_hero.update_stats()
-                    slow_print(f"\nJudge: And the Winner is {main_hero.name}\n")
-                    time.sleep(2)
-                    slow_print(f"Judge: Next fight: {main_hero.name} against The last year Champion\n")
-                    time.sleep(2)
+                    out_text(side_1_01_version_2_short_1())
+                    # slow_print(f"\nJudge: And the Winner is {main_hero.name}\n")
+                    # time.sleep(2)
+                    # slow_print(f"Judge: Next fight: {main_hero.name} against The last year Champion\n")
+                    # time.sleep(2)
                     slow_print("Press Enter to start fight: ")
                     input()
                     enemy = Soldier_chapter_0_2
@@ -101,10 +83,11 @@ def side_1_1_War(main_hero):
                         main_hero.exp += 125
                         return
                     main_hero.update_stats()
-                    slow_print(f"\nJudge: And Final: {main_hero.name} against Nathan\n")
-                    time.sleep(3)
-                    slow_print("Nathan: Didn't expect it will be me in the Final?\nLet's finally found out, who is stronger\n")
-                    time.sleep(3)
+                    out_text(side_1_01_version_2_short_2())
+                    # slow_print(f"\nJudge: And Final: {main_hero.name} against Nathan\n")
+                    # time.sleep(3)
+                    # slow_print("Nathan: Didn't expect it will be me in the Final?\nLet's finally found out, who is stronger\n")
+                    # time.sleep(3)
                     slow_print("Press Enter to start fight: ")
                     input()
                     enemy = Champion_chapter
@@ -121,7 +104,6 @@ def side_1_1_War(main_hero):
                         main_hero.update_stats()
                     main_hero.update_stats()
                     slow_print("You became the champion!!!\n")
-                    time.sleep(3)
                     main_hero.tournament_site = "Winner"
                     main_hero.side_quest = None 
                     main_hero.exp += 250
@@ -138,7 +120,4 @@ def side_1_1_Assasin(main_hero):
      print("")
 
 def side_1_1_Tank(main_hero):
-     print("")
-
-def main_plot_1_1(main_hero):
      print("")

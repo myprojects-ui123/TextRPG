@@ -6,6 +6,7 @@ from Enemy_list import *
 from Choice_class import *
 from Side_Quests import *
 from Inventory import count_item, equip_weapon
+from Main_Quest import *
 
 fight = Fight()
 heal = Heal()
@@ -104,7 +105,22 @@ def location_city(main_hero):
 def location_Fortress(main_hero):
     if main_hero.location == "Fortrest":
         if main_hero.chapter == 1.0:
-            main_hero.location = "city"
+            out_text(main_plot_1)
+            main_hero.story = "Prologue: Chapter 1 completed"
+            return main_hero.story
+        else:
+            while True:
+                try:
+                    a = int(input(""))
+                    break
+                except:
+                    print("Incorrect choice\n")
+            match a:
+                case 1:
+                    main_hero.location == "City"
+                case _:
+                    print("Try Again\n")
+    
         return main_hero.location
 
 def location_North_Forest(main_hero):
