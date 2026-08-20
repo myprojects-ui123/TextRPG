@@ -5,12 +5,27 @@ from Spells import spells
 from Enemy_list import *
 from Choice_class import *
 from Side_Quests import *
-from Inventory import count_item, equip_weapon
+from Inventory import count_item 
 from Main_Quest import *
 
 fight = Fight()
 heal = Heal()
 menu = Menu()
+
+def camp_1(main_hero):
+    if main_hero.location == "Camp_Prologue":
+        print("You're in the Camp\n")
+        while True:
+            try:
+                a = int(input("1.Main Menu\n"))
+                break
+            except ValueError:
+                print("Incorrect\n")
+        match a:
+            case 1:
+                return False
+            case _:
+                print("Try again\n")
 
 def location_road(main_hero):
     if main_hero.location == "Road":
@@ -105,13 +120,14 @@ def location_city(main_hero):
 def location_Fortress(main_hero):
     if main_hero.location == "Fortrest":
         if main_hero.chapter == 1.0:
-            out_text(main_plot_1)
+            out_text(main_plot_1())
             main_hero.story = "Prologue: Chapter 1 completed"
-            return main_hero.story
+            save_game(main_hero)
+            return "Prologue: Chapter 1 completed"
         else:
             while True:
                 try:
-                    a = int(input(""))
+                    a = int(input("1.City"))
                     break
                 except:
                     print("Incorrect choice\n")
@@ -224,13 +240,23 @@ def location_bar(main_hero):
 def location_s(main_hero):
     while True:
         if main_hero.location == "Village":
-            if not location_village(main_hero):
+            result = location_village(main_hero)
+            if not result:
                 if menu.back_to_main_menu(main_hero):
                     return False
-        if main_hero.location == "Fortrest":
-            if not location_Fortress(main_hero):
+        elif main_hero.location == "Camp_Prologue":
+            result = camp_1(main_hero)
+            if not result:
                 if menu.back_to_main_menu(main_hero):
                     return False
+        elif main_hero.location == "Fortrest":
+            result = location_Fortress(main_hero)
+            if not result:
+                if menu.back_to_main_menu(main_hero):
+                    return False
+            elif result == "Prologue: Chapter 1 completed": 
+                save_game(main_hero)
+                return result
         elif main_hero.location == "Site":
             if not location_site(main_hero):
                 if menu.back_to_main_menu(main_hero):

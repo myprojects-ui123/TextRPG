@@ -36,7 +36,9 @@ def count_item(main_hero):
             weapon = Weapons[item]
             menu_items.append(Weapons[item])
             print(f"{number}. {weapon.name}: {count}\n")
-    
+        else:
+            print("No weapons\n")
+            break
 
     print("Armors:\n")
     for item, count in main_hero.inventory.items():
@@ -56,6 +58,8 @@ def count_item(main_hero):
 
     if choice == 0:
         return
+
+    
     if isinstance(selected_item, Weapon):
         equip_weapon(main_hero, selected_item)
     
@@ -77,7 +81,7 @@ def equip_weapon(hero, weapon):
             old_weapon = hero.weapon.id
             hero.weapon.id = item
             hero.inventory[item] -= 1
-            if hero.inventory[item]:
+            if hero.inventory[item] == 0:
                 del hero.inventory[item] 
             if not old_weapon == "fists" or old_weapon != None:
                 add_item(hero, old_weapon)

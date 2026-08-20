@@ -26,7 +26,7 @@ while True:
         break
 
     elif menu.start_game == 2:  
-            main_hero = load_game()
+        main_hero = load_game()
     
     chapter_1_0(main_hero)
     chapter_1_1(main_hero)
