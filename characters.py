@@ -23,10 +23,10 @@ class Character:
         self.dodge = dodge
         self.crit_chance = crit_chance
         self.exp = exp
-        self.gold = gold
+        self._gold = gold
         self.heal_potion = heal_potion
         self.location = location
-    
+        
 
     # def normalize_hp(self, enemy):
     #     if enemy.current_hp < 0:
@@ -69,7 +69,7 @@ class Hero(Character):
             self.physique = physique
             self.lvl = lvl
             self.exp = exp
-            self.gold = gold
+            self._gold = gold
             self.heal_potion = heal_potion
             self.location = location
             self.class_character = class_character
@@ -95,7 +95,22 @@ class Hero(Character):
                 gold,
                 heal_potion,
                 location
-            )
+            )                           
+
+    @property
+    def gold(self):
+        return self._gold
+
+    @gold.setter
+    def gold(self, value):
+        self._gold = value
+
+    def buy_item(self, item):
+        if self._gold < item.price:
+            return False
+
+        self._gold -= item.price
+        return True
 
     def gets_hp(self, enemy):
         if enemy.name == "Small_Ogr":

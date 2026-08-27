@@ -14,7 +14,7 @@ class Armor:
         self.id = id
         self.name = name
         self.resistance = resistance
-        self.prie = price
+        self.price = price
         self.rarity = rarity
         
 
@@ -54,12 +54,11 @@ def count_item(main_hero):
     print("What item do you want to equip?\n")
 
     choice = int(input("0 to go back\n> "))
-    selected_item = menu_items[choice - 1]
 
     if choice == 0:
         return
 
-    
+    selected_item = menu_items[choice - 1]
     if isinstance(selected_item, Weapon):
         equip_weapon(main_hero, selected_item)
     
@@ -126,7 +125,7 @@ strong_hands = Enemy_Weapon("strong_hands", "Strong Hands", 7, 0, "2 star")
 
 
 
-# Armor 
+# Primitive 1 star Armor 
 
 Clothes = Armor("clothes", "Shirt", 0, 0, "1 star")
 
@@ -156,3 +155,71 @@ Armors = {
     Mage_Mantle.id: Mage_Mantle,
     Mantle_of_Thief.id: Mantle_of_Thief 
 }
+
+# BlackSmiths
+
+def Black_smith_1(main_hero):
+    # from characters import Hero
+    while True:
+        while True:
+            try:
+                a = int(input(f"Weapons:\n1.{steel_blade.name} = {steel_blade.price}\n" 
+                            f"2.{staff.name} = {staff.price}\n"
+                            f"3.{blades.name} = {blades.price}\n"
+                            f"4.{steel_gloves.name} = {steel_gloves.price}\n"
+                            f"\nArmors:\n"
+                            f"5.{Iron_Armor.name} = {Iron_Armor.price}\n"
+                            f"6.{Mage_Mantle.name} = {Mage_Mantle.price}\n"
+                            f"7.{Mantle_of_Thief.name} = {Mantle_of_Thief.price}\n"
+                            f"0.Exit\n"))
+                break
+            except ValueError:
+                print("Incorrect\n")
+        match a:
+            case 0:
+                return
+            case 1:
+                if not main_hero.buy_item(steel_blade):
+                    print("Not enough gold\n")
+                    continue
+                add_item(main_hero, steel_blade.id)
+                print(f"You bought {steel_blade.name}\n")
+            case 2:
+                if not main_hero.buy_item(staff):
+                    print("Not enough gold\n")
+                    continue
+                add_item(main_hero, staff.id)
+                print(f"You bought {staff.name}\n")
+            case 3:
+                if not main_hero.buy_item(blades):
+                    print("Not enough gold\n")
+                    continue
+                add_item(main_hero, blades.id)
+                print(f"You bought {blades.name}\n")
+            case 4:
+                if not main_hero.buy_item(steel_gloves):
+                    print("Not enough gold\n")
+                    continue
+                add_item(main_hero, steel_gloves.id)
+                print(f"You bought {steel_gloves.name}\n")
+            case 5:
+                if not main_hero.buy_item(Iron_Armor):
+                    print("Not enough gold\n")
+                    continue
+                add_item(main_hero, Iron_Armor.id)
+                print(f"You bought {Iron_Armor.name}\n")
+            case 6:
+                if not main_hero.buy_item(Mage_Mantle):
+                    print("Not enough gold\n")
+                    continue
+                add_item(main_hero, Mage_Mantle.id)
+                print(f"You bought {Mage_Mantle.name}\n")
+            case 7:
+                if not main_hero.buy_item(Mantle_of_Thief):
+                    print("Not enough gold\n")
+                    continue
+                add_item(main_hero, Mantle_of_Thief.id)
+                print(f"You bought {Mantle_of_Thief.name}\n")
+            case _:
+                print("Try again\n")
+                continue

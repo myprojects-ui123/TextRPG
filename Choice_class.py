@@ -16,6 +16,7 @@ class Warrior(Hero):
         self.update_stats()
         self.update_stats_w()
 
+
     def lvl_up(self):
         if self.exp >= self.exp_need:
             self.lvl += 1
@@ -82,6 +83,7 @@ class Mage(Hero):
         
         self.update_stats()
         self.update_stats_m()
+
 
     def update_stats_m(self):
         self.max_mana = 25 + self.will_power * 3

@@ -16,105 +16,163 @@ def camp_1(main_hero):
     if main_hero.location == "Camp_Prologue":
         print("You're in the Camp\n")
         while True:
-            try:
-                a = int(input("1.Main Menu\n"))
-                break
-            except ValueError:
-                print("Incorrect\n")
-        match a:
-            case 1:
-                return False
-            case _:
-                print("Try again\n")
-
+            while True:
+                try:
+                    a = int(input("1.Guard Camp\n2.Fortrest\n3.Goal\n4.Equipment\n5.Main_menu\n"))
+                    break
+                except ValueError:
+                    print("Incorrect\n")
+            match a:
+                case 1:
+                    main_hero.location = "Camp_inside"
+                    return main_hero.location
+                case 2:
+                    main_hero.location = "Fortrest"
+                    return main_hero.location
+                case 2:
+                    print(main_hero.story, "\n")
+                    if main_hero.side_quest == None:
+                        print("No Side Quest\n")
+                    else:
+                        print(main_hero.side_quest, "\n")
+                case 3:
+                    count_item(main_hero)
+                case 4:
+                    return False
+                case _:
+                    print("Try again\n")
+            
+        
+def camp_1_0(main_hero):
+    if main_hero.location == "Camp_inside":
+        print("You're in the Guard Camp\n")
+        while True:
+            while True:
+                try:
+                    a = int(input("1.Camp\n2.Goal\n3.Equipment\n4.Main Menu\n"))
+                    break
+                except ValueError:
+                    print("incorrect\n")
+            match a:
+                case 1:
+                    main_hero.location = "Camp_Prologue"
+                    return main_hero.location
+                case 2:
+                    print(main_hero.story, "\n")
+                    if main_hero.side_quest == None:
+                        print("No Side Quest\n")
+                    else:
+                        print(main_hero.side_quest, "\n")
+                case 3:
+                    count_item(main_hero)
+                case _:
+                    print("Try again\n")
+            
 def location_road(main_hero):
     if main_hero.location == "Road":
         print("You're in the Road\n")
         while True:
-            try:
-                a = int(input("1.City\n2.North Forest\n3.Village\n4.Goal\n5.Equioment\n6.Main_menu\n"))
-                break
-            except ValueError:
-                print("Incorrect choice\n")
-        match a:
-            case 1:
-                main_hero.location = "city"
-            case 2:
-                main_hero.location = "North Forest"
-            case 3:
-                main_hero.location = "Village"
+            while True:
+                try:
+                    a = int(input("1.City\n2.North Forest\n3.Village\n4.Goal\n5.Equipment\n6.Main_menu\n"))
+                    break
+                except ValueError:
+                    print("Incorrect choice\n")
+            match a:
+                case 1:
+                    main_hero.location = "city"
+                    return main_hero.location
+                case 2:
+                    main_hero.location = "North Forest"
+                    return main_hero.location
+                case 3:
+                    main_hero.location = "Village"
+                    return main_hero.location
 
-            case 4:
-                print(main_hero.story)
-                print(main_hero.side_quest)
-            case 5:
-                count_item(main_hero)
-            case 6:
-                return False
-            case _:
-                print("Incorrect\n")
+                case 4:
+                    print(main_hero.story, "\n")
+                    if main_hero.side_quest == None:
+                        print("No Side Quest\n")
+                    else:
+                        print(main_hero.side_quest, "\n")
+                case 5:
+                    count_item(main_hero)
+                case 6:
+                    return False
+                case _:
+                    print("Incorrect\n")
                 
-        return main_hero.location
+        
 
 def location_village(main_hero):
     if main_hero.location == "Village":
         print("You're in the Village\n")
         while True:
-            try:
-                a = int(input("1.Home\n2.Market\n3.Road\n4.Goal\n5.Equipment\n6.Main_menu\n"))
-                break
-            except ValueError:
-                print("Incorrect choice\n")
-        match a:
-            case 1:
-                main_hero.location = "Home"
-            case 2:
-                main_hero.location = "Market"
-            case 3:
-                main_hero.locatiion = "Road"
-            
-            case 4:
-                print(main_hero.story)
-                print(main_hero.side_quest)
-            case 5:
-                count_item(main_hero)
-            case 6:
-                return False
-            case _:
-                print("Incorrect\n")
-
-        return main_hero.location
+            while True:
+                try:
+                    a = int(input("1.Home\n2.Market\n3.Road\n4.Goal\n5.Equipment\n6.Main_menu\n"))
+                    break
+                except ValueError:
+                    print("Incorrect choice\n")
+            match a:
+                case 1:
+                    main_hero.location = "Home"
+                    return main_hero.location
+                case 2:
+                    main_hero.location = "Market"
+                    return main_hero.location
+                case 3:
+                    main_hero.locatiion = "Road"
+                    return main_hero.location
+                
+                case 4:
+                    print(main_hero.story, "\n")
+                    if main_hero.side_quest == None:
+                        print("No Side Quest\n")
+                    print(main_hero.side_quest, "\n")
+                case 5:
+                    count_item(main_hero)
+                case 6:
+                    return False
+                case _:
+                    print("Incorrect\n")
     
 def location_city(main_hero):
     if main_hero.location == "city":
         print("You're in the city\n")
         while True:
-            try:
-                a = int(input("1.Site\n2.Bar\n3.Fortrest\n4.Road\n5.Goal\n6.Equipment\n7.Main_menu\n"))
-                break
-            except ValueError:
-                print("Incorrect Choice\n")
-        
-        match a:
-            case 1:
-                main_hero.location = "Site"
-            case 2:
-                main_hero.location = "Bar"
-            case 3:
-                main_hero.location = "Fortrest"
-            case 4:
-                if main_hero.chapter == 1.0:
-                    print("Access Denied\n")
-                else:
-                    main_hero.location = "Road"
-            case 5:
-                print(main_hero.story)
-                print(main_hero.side_quest)
-            case 6:
-                count_item(main_hero)
-            case 7:
-                return False    
-        return main_hero.location
+            while True:
+                try:
+                    a = int(input("1.Site\n2.Bar\n3.Fortrest\n4.Road\n5.Goal\n6.Equipment\n7.Main_menu\n"))
+                    break
+                except ValueError:
+                    print("Incorrect Choice\n")
+            match a:
+                case 1:
+                    main_hero.location = "Site"
+                    return main_hero.location
+                case 2:
+                    main_hero.location = "Bar"
+                    return main_hero.location
+                case 3:
+                    main_hero.location = "Fortrest"
+                    return main_hero.location
+                case 4:
+                    if main_hero.chapter == 1.0:
+                        print("Access Denied\n")
+                    else:
+                        main_hero.location = "Road"
+                        return main_hero.location
+                case 5:
+                    print(main_hero.story, "\n")
+                    if main_hero.side_quest == None:
+                        print("No Side Quest\n")
+                    else:
+                        print(main_hero.side_quest, "\n")
+                case 6:
+                    count_item(main_hero)
+                case 7:
+                    return False  
             
 
 def location_Fortress(main_hero):
@@ -126,54 +184,68 @@ def location_Fortress(main_hero):
             return "Prologue: Chapter 1 completed"
         else:
             while True:
-                try:
-                    a = int(input("1.City"))
-                    break
-                except:
-                    print("Incorrect choice\n")
-            match a:
-                case 1:
-                    main_hero.location == "City"
-                case _:
-                    print("Try Again\n")
-    
-        return main_hero.location
+                while True:
+                    try:
+                        a = int(input("1.City\n2.Training Hall\n3.Goal\n4.Equipment\n5.Main Menu\n"))
+                        break
+                    except:
+                        print("Incorrect choice\n")
+                match a:
+                    case 1:
+                        main_hero.location == "city"
+                        return main_hero.location
+                    case 2:
+                        main_hero.location == "Training_hall"
+                        return main_hero.location
+                    case 3:
+                        print(main_hero.story, "\n")
+                        if main_hero.side_quest == None:
+                            print("No Side Quest\n")
+                        else:
+                            print(main_hero.side_quest, "\n")
+                    case _:
+                        print("Try Again\n")
 
 def location_North_Forest(main_hero):
     if main_hero.location == "North Forest":
         while True:
-            try:
-                a = int(input("1.Hunt\n2.Pick Berries\n3.Road\n4.Goal\n5.Equipment\n6.Main_menu\n"))
-                break
-            except ValueError:
-                print("Incorrect choice\n")
+            while True:
+                try:
+                    a = int(input("1.Hunt\n2.Pick Berries\n3.Road\n4.Goal\n5.Equipment\n6.Main_menu\n"))
+                    break
+                except ValueError:
+                    print("Incorrect choice\n")
         
-        match a:
-            case 1:
-                hunt = random.randint(1, 100)
-                if hunt <= 30:
-                    print("You attacked Ogr!\n")
-                    enemy = Ogr
-                    if not location__current_fight(main_hero, enemy):
-                        return "dead"
-                elif hunt >= 31 and hunt <= 35:
-                    print("You found gold!\n")
-                main_hero.gold += 5
-            case 2:
-                main_hero.location = "Bar"
-            case 3:
-                main_hero.location = "Road"
-            
-            case 4:
-                print(main_hero.story)
-                print(main_hero.side_quest)
-            case 5:
-                count_item(main_hero)
-            case 6:
-                return False
-            case _:
-                print("Incorrect\n")
-        return main_hero.location
+            match a:
+                case 1:
+                    hunt = random.randint(1, 100)
+                    if hunt <= 30:
+                        print("You attacked Ogr!\n")
+                        enemy = Ogr
+                        if not location__current_fight(main_hero, enemy):
+                            return "dead"
+                    elif hunt >= 31 and hunt <= 35:
+                        print("You found gold!\n")
+                    main_hero.gold += 5
+                case 2:
+                    main_hero.location = "Bar"
+                    return main_hero.location
+                case 3:
+                    main_hero.location = "Road"
+                    return main_hero.location
+                
+                case 4:
+                    print(main_hero.story, "\n")
+                    if main_hero.side_quest == None:
+                        print("No Side Quest\n")
+                    else:
+                        print(main_hero.side_quest, "\n")
+                case 5:
+                    count_item(main_hero)
+                case 6:
+                    return False
+                case _:
+                    print("Incorrect\n")
             
 
 def location_site(main_hero):
@@ -181,24 +253,52 @@ def location_site(main_hero):
         side_1_1_War(main_hero)
         if main_hero.chapter == 1.0:
             while True:
-                try:
-                    a = int(input("1.City\n2.Goal\n3.Equipment\n4.Main_menu\n"))
-                    break
-                except ValueError:
-                    print("Try again\n")
-            match a:
-                case 1:
-                    main_hero.location = "city"
-                case 2:
-                    print(main_hero.story)
-                    print(main_hero.side_quest)
-                case 3:
-                    count_item(main_hero)
-                case 4:
-                    return False
-                case _:
-                    print("Incorrect\n")
-            return main_hero.location
+                while True:
+                    try:
+                        a = int(input("1.City\n2.Goal\n3.Equipment\n4.Main_menu\n"))
+                        break
+                    except ValueError:
+                        print("Incorrect\n")
+                match a:
+                    case 1:
+                        main_hero.location = "city"
+                        return main_hero.location
+                    case 2:
+                        print(main_hero.story, "\n")
+                        if main_hero.side_quest == None:
+                            print("No Side Quest\n")
+                        else:
+                            print(main_hero.side_quest, "\n")
+                    case 3:
+                        count_item(main_hero)
+                    case 4:
+                        return False
+                    case _:
+                        print("Incorrect\n")
+        else:
+            while True:
+                while True:
+                    try:
+                        a = int(input("1.City\n2.BlackSmith\n3.Goal\n4.Equipment\n5.Main_menu\n"))
+                        break
+                    except ValueError:
+                        print("Try again\n")
+                match a:
+                    case 1:
+                        main_hero.location = "city"
+                        return main_hero.location
+                    case 2:
+                        Black_smith_1(main_hero)
+                    case 3:
+                        print(main_hero.story, "\n")
+                        if main_hero.side_quest == None:
+                            print("No Side Quest\n")
+                        else:
+                            print(main_hero.side_quest, "\n")
+                    case 4:
+                        count_item(main_hero)
+                    case 5:
+                        return False
                 
 
 def location_brothel():
@@ -209,33 +309,57 @@ def location_bar(main_hero):
         side_1_0_War(main_hero)
         if main_hero.chapter == 1.0:
             while True:
-                try:
-                    a = int(input("1.City\n2.Goal\n3.Main_menu\n"))
-                    break
-                except ValueError:
-                    print("Incorrect Choice\n")
-            match a:
-                case 1:
-                    main_hero.location = "city"
-                case 2:
-                    print(main_hero.story)
-                    print(main_hero.side_quest)
-                case 3:
-                    return False
-                case _:
-                    print("Incorrect\n")
-                
-            return main_hero.location
+                while True:
+                    try:
+                        a = int(input("1.City\n2.Goal\n3.Main_menu\n"))
+                        break
+                    except ValueError:
+                        print("Incorrect Choice\n")
+                match a:
+                    case 1:
+                        main_hero.location = "city"
+                        return main_hero.location
+                    case 2:
+                        print(main_hero.story)
+                        print(main_hero.side_quest)
+                    case 3:
+                        return False
+                    case _:
+                        print("Incorrect\n")
         else:
-            try:
-                a = int(input("1.Drink\n2.Food\n3.City\n4.Goal\n5.Main_menu\n"))
-            except ValueError:
-                print("Try again\n")
-            if a == 3:
-                main_hero.location == "city"
-                return main_hero.location
-            
-            return main_hero.location
+            while True:
+                while True:
+                    try:
+                        a = int(input("1.Drink\n2.Food\n3.City\n4.Goal\n5.Main_menu\n"))
+                        break
+                    except ValueError:
+                        print("Try again\n")
+                match a:
+                    case 1:
+                        if main_hero.gold < 20:
+                            print("Not enough gold for drink\n")
+                            continue
+                        main_hero.gold -= 20
+                        main_hero.current_stamina += 10
+                        print("You bought a bear.\n+10 to Stamina\n")
+                    case 2:
+                        if main_hero.gold < 20:
+                            print("Not enough gold for drink\n")
+                            continue
+                        main_hero.gold -= 20
+                        main_hero.current_hp += 10
+                        print("You bought a fish.\n+10 to HP\n")
+                    case 3:
+                        main_hero.location == "city"
+                        return main_hero.location
+                    case 4:
+                        print(main_hero.story, "\n")
+                        if main_hero.side_quest == None:
+                            print("No Side Quest\n")
+                        else:
+                            print(main_hero.side_quest, "\n")
+                    case 5:
+                        return False
 
 def location_s(main_hero):
     while True:
@@ -249,6 +373,11 @@ def location_s(main_hero):
             if not result:
                 if menu.back_to_main_menu(main_hero):
                     return False
+        elif main_hero.location == "Camp_inside":
+            result = camp_1_0(main_hero)
+            if not result:
+                if menu.back_to_main_menu(main_hero):
+                    return False
         elif main_hero.location == "Fortrest":
             result = location_Fortress(main_hero)
             if not result:
@@ -258,19 +387,23 @@ def location_s(main_hero):
                 save_game(main_hero)
                 return result
         elif main_hero.location == "Site":
-            if not location_site(main_hero):
+            result = location_site(main_hero)
+            if not result:
                 if menu.back_to_main_menu(main_hero):
                     return False
         elif main_hero.location == "city":
-            if not location_city(main_hero):
+            result = location_city(main_hero)
+            if not result:
                 if menu.back_to_main_menu(main_hero):
                     return False
         elif main_hero.location == "Road":
-            if not location_road(main_hero):
+            result = location_road(main_hero)
+            if not result:
                 if menu.back_to_main_menu(main_hero):
                     return False
         elif main_hero.location == "Bar":
-            if not location_bar(main_hero):
+            result = location_bar(main_hero)
+            if not result:
                 if menu.back_to_main_menu(main_hero):
                     return False
         elif main_hero.location == "North Forest":

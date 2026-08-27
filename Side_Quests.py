@@ -36,21 +36,6 @@ def side_1_1_War(main_hero):
      from locations import location__current_fight
      if main_hero.class_character == "Warrior":
         if main_hero.side_quest == "Meet Nathan on the Site" and main_hero.tournament_site == None:
-                    # slow_print("You arrived to the Site and saw many soldiers around area. Then you saw Nathan and came straight to him\n")
-                    # time.sleep(2)
-                    # slow_print("Nathan: Oh, you here, I knew you would come\n")
-                    # time.sleep(2)
-                    # slow_print("You: Of Course I would come\n")
-                    # time.sleep(2)
-                    # slow_print("Nathan:There are 3 stages. Quarter-Final. Semi-Final. Final.\nYou need to win 3 opponents to win Tournament\n")
-                    # time.sleep(2)
-                    # slow_print("You:Okay, got it\n")
-                    # time.sleep(2)
-                    # slow_print("Nathan: Added you to the list of participants, show them, how to fight")
-                    # time.sleep(2)
-                    # slow_print("You: I will\n")
-                    # time.sleep(2)
-                    # slow_print(f"Judge: First fight of Quarter Finals: {main_hero.name} against Blacksmith\n")
                     out_text(side_1_01_version_2())
                     slow_print("Press Enter to start fight: ")
                     input()
@@ -64,10 +49,6 @@ def side_1_1_War(main_hero):
                         return
                     main_hero.update_stats()
                     out_text(side_1_01_version_2_short_1())
-                    # slow_print(f"\nJudge: And the Winner is {main_hero.name}\n")
-                    # time.sleep(2)
-                    # slow_print(f"Judge: Next fight: {main_hero.name} against The last year Champion\n")
-                    # time.sleep(2)
                     slow_print("Press Enter to start fight: ")
                     input()
                     enemy = Soldier_chapter_0_2
@@ -84,10 +65,6 @@ def side_1_1_War(main_hero):
                         return
                     main_hero.update_stats()
                     out_text(side_1_01_version_2_short_2())
-                    # slow_print(f"\nJudge: And Final: {main_hero.name} against Nathan\n")
-                    # time.sleep(3)
-                    # slow_print("Nathan: Didn't expect it will be me in the Final?\nLet's finally found out, who is stronger\n")
-                    # time.sleep(3)
                     slow_print("Press Enter to start fight: ")
                     input()
                     enemy = Champion_chapter
@@ -110,7 +87,8 @@ def side_1_1_War(main_hero):
                     add_item(main_hero, Weapons[steel_blade.id])
                     slow_print(f"You got Steel blade and 250 Exp!\n")
                     save_game(main_hero)
-                    time.sleep(3)
+                    time.sleep(1)
+                    input("")
                     return True
      
 def side_1_1_Mage(main_hero):
